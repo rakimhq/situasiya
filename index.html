@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situasiya Qiymətləndirmə Testi (SJT) - İmtahan Portalı</title>
+    <!-- Google Fonts Inter & Roboto (Both have perfect native support for Azerbaijani "Ə" and "ə") -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons for Beautiful Visuals -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        // Standardizing sans fonts with explicit fallbacks supporting local Turkic characters flawlessly
+                        sans: ['Inter', 'Roboto', 'Segoe UI', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f5f7ff',
+                            100: '#ebf0ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling and styling improvements */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        body {
+            font-family: 'Inter', 'Roboto', 'Segoe UI', 'Arial', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col antialiased">
+
+<header class="bg-brand-900 text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-3">
+            <div class="bg-brand-600 p-2.5 rounded-lg text-white">
+                <i class="fa-solid fa-graduation-cap text-2xl"></i>
+            </div>
+            <div>
+                <h1 class="font-extrabold text-lg sm:text-xl tracking-tight">SJT İmtahan Portalı</h1>
+                <p class="text-xs text-brand-100">Situasiya Qiymətləndirmə Testi Platforması</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3 text-sm">
+            <!-- Qalan vaxt göstəricisi -->
+            <div id="timer-container" class="hidden flex items-center gap-2 bg-rose-600/30 border border-rose-500/40 px-3.5 py-1.5 rounded-full text-white font-mono text-xs tracking-wider animate-pulse">
+                <i class="fa-solid fa-clock text-rose-300"></i>
+                <span id="timer-display" class="font-bold">50:00</span>
+            </div>
+            
+            <div id="progress-container" class="hidden sm:flex flex-col items-end">
+                <span class="text-xs text-brand-100">İmtahanın gedişatı</span>
+                <span id="progress-text" class="font-semibold text-white">Sual 1 / 16</span>
+            </div>
+            <div class="h-8 w-[1px] bg-brand-700 hidden sm:block"></div>
+            <div class="bg-brand-700 px-4 py-1.5 rounded-full text-xs font-semibold flex items-center gap-2">
+                <i class="fa-regular fa-star text-amber-400"></i> Maksimum: 52 Bal
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 md:py-8 flex flex-col lg:flex-row gap-6">
+    <!-- Sol tərəfdəki Ssenarilər naviqasiya paneli -->
+    <aside id="sidebar" class="lg:w-1/4 w-full flex flex-col gap-4 hidden lg:block">
+        <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+            <h2 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-folder-open text-brand-500"></i> Ssenarilər
+            </h2>
+            <div class="space-y-2" id="scenario-nav-list">
+                <!-- Dinamik daxil ediləcək -->
+            </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+            <h3 class="font-bold text-slate-900 mb-3 text-sm">İmtahan Qaydaları</h3>
+            <ul class="text-xs text-slate-500 space-y-2.5">
+                <li class="flex gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-500 shrink-0 mt-0.5"></i>
+                    <span>Cəmi 16 situasiya və 50 dəqiqə limitiniz var.</span>
+                </li>
+                <li class="flex gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-500 shrink-0 mt-0.5"></i>
+                    <span>Vaxt bitdikdə, cavablanmayan suallar avtomatik 0 xal olaraq qiymətləndirilir.</span>
+                </li>
+                <li class="flex gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-500 shrink-0 mt-0.5"></i>
+                    <span>Doğru cavablar və ətraflı şərhlər imtahanın sonunda göstəriləcək.</span>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Əsas İşçi Sahəsi -->
+    <section class="flex-grow lg:w-3/4 w-full flex flex-col gap-6">
+        <!-- Tərəqqi barı -->
+        <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+            <div id="top-progress-bar" class="bg-brand-50 h-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+
+        <!-- Giriş Ekranı Konteyneri -->
+        <div id="welcome-container" class="bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-slate-100 flex flex-col gap-6">
+            <div class="text-center max-w-2xl mx-auto flex flex-col gap-4 py-4">
+                <div class="inline-flex mx-auto bg-brand-50 p-4 rounded-full text-brand-600 mb-2">
+                    <i class="fa-solid fa-clipboard-question text-4xl"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">Situasiya Qiymətləndirmə Testi</h2>
+                <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                    Bu portal qərar qəbul etmə və çətin vəziyyətlərdə davranış üslublarını qiymətləndirmək üçün istifadə olunan Situasiya Qiymətləndirmə Testi (SJT) nümunələrinə əsaslanaraq yaradılmışdır.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                    <div class="text-brand-600 bg-brand-100 p-2 rounded-lg mt-0.5 shrink-0">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm">4 Fərqli Ssenari</h4>
+                        <p class="text-xs text-slate-500 mt-1">Hər ssenari fərqli iş mühiti və rolu (Pərakəndə satış, insan resursları və s.) təmsil edir.</p>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                    <div class="text-brand-600 bg-brand-100 p-2 rounded-lg mt-0.5 shrink-0">
+                        <i class="fa-solid fa-circle-question"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm">Cəmi 16 Situasiya</h4>
+                        <p class="text-xs text-slate-500 mt-1">Hər bir ssenaridə fərqli cavabvermə formalarına malik 4 ədəd situasiya təqdim olunur.</p>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                    <div class="text-brand-600 bg-brand-100 p-2 rounded-lg mt-0.5 shrink-0">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm">50 dəqiqə vaxt limiti</h4>
+                        <p class="text-xs text-slate-500 mt-1">Zaman tamamlandıqda tamamlanmayan suallar avtomatik olaraq sıfır bal kimi qiymətləndiriləcəkdir.</p>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                    <div class="text-brand-600 bg-brand-100 p-2 rounded-lg mt-0.5 shrink-0">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm">Maksimum 52 Bal</h4>
+                        <p class="text-xs text-slate-500 mt-1">Scoring matrisinə uyğun olaraq imtahandan toplaya biləcəyiniz ən yüksək baldır.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-100 pt-6 text-center">
+                <button id="start-exam-btn" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition-all inline-flex items-center gap-2 text-base">
+                    İmtahana Başla <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- İmtahan Ekranı -->
+        <div id="exam-container" class="hidden flex flex-col gap-6">
+            <!-- Aktiv Ssenari Məlumat Banneri -->
+            <div id="scenario-banner" class="bg-brand-50 border border-brand-100 rounded-2xl p-6">
+                <div class="flex items-center justify-between mb-3">
+                    <span id="scenario-badge" class="bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Ssenari 1</span>
+                    <span id="competency-badge" class="text-xs font-semibold text-brand-600 bg-brand-100 px-3 py-1 rounded-full"></span>
+                </div>
+                <h3 id="scenario-title" class="font-extrabold text-slate-900 text-lg md:text-xl mb-3">Ssenari Adı</h3>
+                <div id="scenario-description" class="text-slate-600 text-sm leading-relaxed max-h-36 overflow-y-auto pr-2 custom-scrollbar">
+                    Ssenari mətni...
+                </div>
+            </div>
+
+            <!-- Aktiv Sual/Situasiya Kartı -->
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col gap-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-100 pb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="bg-slate-100 text-slate-700 font-bold px-3 py-1 rounded-lg text-sm" id="question-index-badge">Situasiya 1 / 16</span>
+                    </div>
+                    <div id="validation-warning" class="hidden text-amber-600 text-xs font-semibold flex items-center gap-1.5 bg-amber-50 px-3 py-1.5 rounded-lg border border-amber-100">
+                        <i class="fa-solid fa-circle-exclamation text-amber-500"></i>
+                        <span id="validation-warning-text">Lütfən, cavablarınızı düzgün qeyd edin.</span>
+                    </div>
+                </div>
+
+                <!-- Situasiya Mətni -->
+                <div>
+                    <h4 class="font-semibold text-slate-400 text-xs uppercase tracking-wider mb-2">Vəziyyət / Situasiya</h4>
+                    <p id="situation-text" class="text-slate-800 text-base font-medium leading-relaxed">
+                        Situasiya mətni...
+                    </p>
+                </div>
+
+                <!-- Cavab Giriş Paneli -->
+                <div id="answers-input-panel" class="flex flex-col gap-4">
+                    <!-- Dinamik daxil ediləcək -->
+                </div>
+
+                <!-- Naviqasiya Düymələri -->
+                <div class="flex justify-between items-center border-t border-slate-100 pt-6 mt-4">
+                    <button id="prev-btn" class="border border-slate-200 hover:bg-slate-50 text-slate-600 font-bold px-5 py-2.5 rounded-xl transition-all flex items-center gap-2 text-sm disabled:opacity-50 disabled:pointer-events-none">
+                        <i class="fa-solid fa-arrow-left"></i> Geri
+                    </button>
+                    <button id="next-btn" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-2.5 rounded-xl transition-all flex items-center gap-2 text-sm shadow-md hover:shadow-lg">
+                        Növbəti Sual <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nəticələr və İzahlı Təhlil Paneli -->
+        <div id="results-container" class="hidden flex flex-col gap-6">
+            <!-- Vaxt Bitdi Banneri -->
+            <div id="timeout-banner" class="hidden w-full bg-rose-50 border border-rose-200 text-rose-800 p-5 rounded-2xl flex items-center gap-4 shadow-sm">
+                <div class="bg-rose-100 p-3 rounded-full text-rose-600">
+                    <i class="fa-solid fa-hourglass-end text-2xl animate-bounce"></i>
+                </div>
+                <div>
+                    <h4 class="font-extrabold text-sm text-rose-900">Zaman bitdi!</h4>
+                    <p class="text-xs text-rose-600 mt-1">50 dəqiqəlik limit tamamlandı. Cavablandırılmayan suallara görə 0 bal qeyd edildi.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 text-center flex flex-col items-center gap-5">
+                <div class="inline-flex bg-emerald-50 text-emerald-600 p-5 rounded-full text-5xl">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">İmtahan Tamamlandı!</h2>
+                    <p class="text-slate-500 text-sm mt-1">Qiymətləndirmə nəticəniz aşağıda göstərilmişdir.</p>
+                </div>
+
+                <!-- Dinamik Dairəvi Bal Göstəricisi -->
+                <div class="relative w-40 h-40 flex items-center justify-center mt-2">
+                    <svg class="w-full h-full transform -rotate-90">
+                        <circle cx="80" cy="80" r="70" class="stroke-slate-100 fill-none" stroke-width="12"></circle>
+                        <circle cx="80" cy="80" r="70" id="score-ring" class="stroke-emerald-500 fill-none transition-all duration-1000" stroke-width="12" stroke-dasharray="440" stroke-dashoffset="440"></circle>
+                    </svg>
+                    <div class="absolute flex flex-col items-center justify-center">
+                        <span id="final-score" class="text-4xl font-extrabold text-slate-900">0</span>
+                        <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Cəmi bal (Maks: 52)</span>
+                    </div>
+                </div>
+
+                <div class="max-w-md">
+                    <h3 id="performance-level" class="font-bold text-lg text-emerald-600">Mükəmməl Nəticə!</h3>
+                    <p id="performance-feedback" class="text-sm text-slate-600 mt-2 leading-relaxed">
+                        Nəticə şərhi...
+                    </p>
+                </div>
+
+                <button id="restart-btn" class="border border-brand-500 hover:bg-brand-50 text-brand-600 font-bold px-6 py-2.5 rounded-xl transition-all text-sm flex items-center gap-2 mt-2">
+                    <i class="fa-solid fa-rotate-left"></i> Yenidən Başla
+                </button>
+            </div>
+
+            <!-- Ətraflı Sual Təhlilləri -->
+            <div class="bg-white p-5 md:p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col gap-6">
+                <h3 class="font-extrabold text-slate-900 text-xl flex items-center gap-2 border-b border-slate-100 pb-4">
+                    <i class="fa-solid fa-list-check text-brand-500"></i> Sualların İzahlı Təhlili
+                </h3>
+                <div id="review-list" class="flex flex-col gap-4">
+                    <!-- Dinamik olaraq dolacaq -->
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-6 text-center text-xs mt-auto">
+    <div class="max-w-7xl mx-auto px-4">
+        <p>© 2026 SJT İmtahan Portalı. Bütün hüquqlar qorunur.</p>
+        <p class="mt-1 text-slate-500">Orijinal ssenarilər "2026 SJT-Answers.pdf" və digər rəsmi SJT sənədlərinə əsaslanır.</p>
+    </div>
+</footer>
+
+<script>
+const SJT_DATABASE = [
+    {
+        id: 1,
+        scenarioId: 1,
+        scenarioBadge: "Ssenari 1",
+        scenarioTitle: "Pərakəndə Satış Üzrə Köməkçi (X-Dəftəxana MMC)",
+        scenarioDesc: "Siz milli dəftərxana ləvazimatı mağazaları şəbəkəsi olan 'X-Dəftəxana MMC'-nin Saldringham filialında Pərakəndə Satış köməkçisisiniz. Bu şəbəkənin əsasən Böyük Britaniyada 1000-dən çox mağazası var (aeroportlarda, vağzallarda və s.). Filiallar əsasən həftənin 7 günü saat 8:30-dan 17:30-a qədər fəaliyyət göstərir. Rolunuz müştəri məmnuniyyətini təmin etmək, məhsullar haqqında biliyinizi nümayiş etdirmək və satışı artırmaqdır. Siz əsasən kitab bölməsində çalışırsınız, lakin vahid komandanın bir üzvü kimi digər bölmələrdə də köməklik göstərirsiniz.",
+        situationTitle: "Situasiya 1: Mağazada Olmayan Kitab",
+        situationText: "Bir müştəri təxminən 10 dəqiqədir kitab bölməsində gəzir və getdikcə daha çox məyus və qəzəbli görünür. O, sizə yaxınlaşaraq axtardığı xüsusi bir kitabın olub-olmadığını soruşur. Kompüterdə yoxladıqdan sonra ona bu kitabın hazırda anbarda olmadığını ('out of stock') bildirməli olursunuz.",
+        competency: "Xidmət Etikası (Service Ethos)",
+        format: "most_least",
+        options: [
+            {
+                key: "A",
+                text: "Kitabın hazırda mövcud olmadığı üçün üzr istəyin və onun əvəzinə Morethanpens.co.uk saytından yaxud digər onlayn satıcıdan sınaqdan keçirməyi təklif edin.",
+                verdict: "least",
+                explanation: "Ən az effektiv cavabdır, çünki müştəriyə heç bir birbaşa kömək etmirsiniz və onun kompüteri olub-olmadığını, internetdən alış-veriş edə bilib-bilmədiyini bilmirsiniz."
+            },
+            {
+                key: "B",
+                text: "Müştəri üçün kitabı sifariş etməyi və bunun nə qədər vaxt aparacağını bildirməyi təklif edin. Kitab gəldikdə ona zəng edəcəyinizi söyləyin.",
+                verdict: "most",
+                explanation: "Ən effektiv cavabdır, çünki müştərininin çox səy göstərməsinə ehtiyac qalmadan onun istəyini yerinə yetirməyə çalışırsınız. Sifarişin müddətini bildirməklə o, məlumatlı qərar qəbul edə bilər."
+            },
+            {
+                key: "C",
+                text: "Müştəriyə kitabın ISBN nömrəsini verin ki, o, internetdə yaxud digər kitab dükanlarında kitabı asanlıqla axtarıb tapa bilsin.",
+                verdict: "intermediate",
+                explanation: "Mülayim cavabdır, lakin müştərinin kitabı tapmasına birbaşa kömək etmək üçün çox az iş görürsünüz; onun hələ də özünün xeyli səy göstərməsi lazım olacaq."
+            },
+            {
+                key: "D",
+                text: "Ona X-Dəftəxana MMC-in 40 dəqiqəlik məsafədə yerləşən qonşu şəhərdəki Alpston filialına getməyi yaxud Saldringham-dakı digər kitab mağazalarını sınaqdan keçirməyi təklif edin.",
+                verdict: "intermediate",
+                explanation: "Çox da uyğun cavab deyil. Müştərinin digər yerləri yoxlaya biləcəyi onsuz da məlumdur. Alpston filialına yola düşməzdən əvvəl həmin filialda kitabın olub-olmadığını öyrənmək üçün zəng edə bilərdiniz."
+            }
+        ]
+    },
+    {
+        id: 2,
+        scenarioId: 1,
+        scenarioBadge: "Ssenari 1",
+        scenarioTitle: "Pərakəndə Satış Üzrə Köməkçi (X-Dəftəxana MMC)",
+        scenarioDesc: "Siz milli dəftərxana ləvazimatı mağazaları şəbəkəsi olan 'X-Dəftəxana MMC'-nin Saldringham filialında Pərakəndə Satış köməkçisisiniz.",
+        situationTitle: "Situasiya 2: Dağınıq Dəftərxana Bölməsi",
+        situationText: "Çərşənbə axşamı səhəridir və dəftərxana bölməsindəki həmkarınız xəstəlik məzuniyyətindədir. Saat 11:00-da siz sürətli çay fasiləsi etmək üçün işçi otağına gedərkən dəftərxana bölməsindən keçirsiniz və oranın ciddi şəkildə dağınıq olduğunu görürsünüz. Məhsullar yerə düşüb, rəflər nizamsızdır və bəzi mallar səhv rəflərdədir.",
+        competency: "Komanda işi (Teamwork)",
+        format: "most_least",
+        options: [
+            {
+                key: "A",
+                text: "Çay fasilənizi edin və geri qayıdarkən əgər bölmə hələ də dağınıqdırsa, bir neçə şeyi tez bir zamanda səliqəyə salın.",
+                verdict: "intermediate",
+                explanation: "Münasib cavab deyil, çünki bu, fasilədən gec qayıtmağınıza səbəb olacak və həmkarlarınızı məlumatlandırmamış olqsınız. Həmçinin dərhal reaksiya verməməklə müştərilərdə pis təəssürat yaradırsınız."
+            },
+            {
+                key: "B",
+                text: "Öz bölmənizə qayıdın və komanda rəhbərinizdən dəftərxana bölməsinə kömək etmək üçün 10-15 dəqiqə vaxtınızın olub-olmadığını soruşun. İcazə verilərsə, dəftərxana qrupunun rəhbərinə kömək edin, çay fasilənizi isə 11:30-a keçirin.",
+                verdict: "most",
+                explanation: "Ən effektiv cavabdır, çünki hər kəsi məlumatlandırmaqla problemi sürətlə həll edirsiniz. Bölmələr arası süni sərhədlər yaratmır və mağazanın ümumi görünüşünün qayğısına qalırsınız."
+            },
+            {
+                key: "C",
+                text: "Heç bir şey etməyin. Dəftərxana bölməsinin rəhbəri yəqin ki, vəziyyəti nəzarətdə saxlayır və tezliklə həll edəcək. Bir nəfər olmadığı üçün səliqəsizliyin olması normaldır, həm də kömək təklif etməklə onları təhqir etmək istəmirsiniz.",
+                verdict: "least",
+                explanation: "Ən az effektiv cavabdır, çünki problemin avtomatik həll ediləcəyini fərz edirsiniz. Mağazanın bircə bölməsinin belə dağınıq olması ümumi müştəri rəyinə mənfi təsir göstərəcək."
+            },
+            {
+                key: "D",
+                text: "Dəftərxana bölməsinin rəhbərinə həmin bölmənin təqdimatında problem olduğunu bildirin.",
+                verdict: "intermediate",
+                explanation: "Məntiqli cavabdır, çünki rəhbər məlumatlandırılır. Lakin bölmənin işçi çatışmazlığından əziyyət çəkdiyini bildiyiniz halda, vaxtınız varsa birbaşa kömək təklif etmək daha dəstəkləyici olardı."
+            }
+        ]
+    },
+    {
+        id: 3,
+        scenarioId: 1,
+        scenarioBadge: "Ssenari 1",
+        scenarioTitle: "Pərakəndə Satış Üzrə Köməkçi (X-Dəftəxana MMC)",
+        scenarioDesc: "Siz milli dəftərxana ləvazimatı mağazaları şəbəkəsi olan 'X-Dəftəxana MMC'-nin Saldringham filialında Pərakəndə Satış köməkçisisiniz.",
+        situationTitle: "Situasiya 3: Kitab Satışının 15% Artırılması Hədəfi",
+        situationText: "İyun ayının sonudur. Bölmə komanda iclasınız indicə başa çatıb və komanda rəhbəriniz sizə gələn ay üçün xüsusi hədəf verib: Uşaq kitablarının satışını ötən ilin iyul ayı ile müqayisədə 15% artırmaq lazımdır. İyul ayı uşaq məhsulları üçün çətin aydır, çünki məktəblər bağlanır və ailələr adətən bu dövrdə kitablara çox pul xərcləmirlər. Bu hədəfə çatmaq üçün əlavə büdcəniz olmayacaq.",
+        competency: "Nəticəyə Nail Olmaq (Achieving Results)",
+        format: "most_least",
+        options: [
+            {
+                key: "A",
+                text: "Kassa aparatının yaxınlığında 'X-Dəftəxana MMC'-in uşaqlar üçün təklif etdiyi möhtəşəm yay fəaliyyət kitablarını təbliğ edən əl yazısı ilə yazılmış bir poster yerləşdirin.",
+                verdict: "intermediate",
+                explanation: "Çox uyğun cavab deyil. Alıcılar kassaya çatdıqda artıq uşaq kitabları bölməsinə geri qayıtmaq ehtimalı azdır. Həmçinin əlyazma poster büdcəsizliyi həll etsə də, bir qədər qeyri-peşəkar görünə bilər."
+            },
+            {
+                key: "B",
+                text: "Yay mövzulu və 'yay tətili' fəaliyyət kitablarından ibarət xüsusi bir kolleksiya seçib onları uşaq bölməsinin ön tərəfinə yerləşdirin.",
+                verdict: "intermediate",
+                explanation: "Ağlabatan cavabdır, uşaq bölməsində gəzişən müştərilərin diqqətini çəkəcək və onlara tətildə uşaqlarını əyləndirmək üçün fikir verəcək. Lakin aktiv təşviqat üçün daha çox şey etmək olar."
+            },
+            {
+                key: "C",
+                text: "Uşaq kitabları sahəsini səliqəyə salın və onu mümkün qədər gözəl şəkildə təqdim edin.",
+                verdict: "least",
+                explanation: "Ən az effektiv cavabdır, çünki bu hərəkətin əlavə müştəri cəlb edəcəyinə yaxud kitab almağa həvəsləndirəcəyinə heç bir zəmanət yoxdur. Səliqəlilik onsuz da minimum tələb olunan şərtdir."
+            },
+            {
+                key: "D",
+                text: "Yanında uşaq (övladı, nəvəsi) olan müştərilərə nəzakətlə yaxınlaşın və onlara X-Dəftəxana MMC-in yay tətili fəaliyyət və nağıl kitablarının çeşidindən danışıb kitabların yerini göstərin.",
+                verdict: "most",
+                explanation: "Ən effektiv cavabdır, çünki heç bir reklam büdcəsi olmadan müştəriləri məlumatlandırmağın ən dinamik yoludur. Müştəriyə birbaşa kömək və məsləhət verə bilirsiniz."
+            }
+        ]
+    },
+    {
+        id: 4,
+        scenarioId: 1,
+        scenarioBadge: "Ssenari 1",
+        scenarioTitle: "Pərakəndə Satış Üzrə Köməkçi (X-Dəftəxana MMC)",
+        scenarioDesc: "Siz milli dəftərxana ləvazimatı mağazaları şəbəkəsi olan 'X-Dəftəxana MMC'-nin Saldringham filialında Pərakəndə Satış köməkçisisiniz.",
+        situationTitle: "Situasiya 4: Kredit Kartı Sisteminin Çökməsi",
+        situationText: "Gərgin bir şənbə günü günortadan sonra kassada növbədəsiniz. Mağazanın çıxışındakı əsas kassalarda çalışırsınız. Birdən kredit kartı ilə əməliyyat sistemi fəaliyyətini dayandırır və komanda rəhbəri sizə sistem provayderinin problemi həll etməsinin 15 dəqiqə çəkəcəyini deyir. Qarşıda isə böyük müştəri növbəsi yaranıb.",
+        competency: "Çətin Vəziyyətlərin Öhdəsindən Gəlmək (Coping With Challenging Situations)",
+        format: "most_least",
+        options: [
+            {
+                key: "A",
+                text: "Komanda rəhbəri ilə danışın və təklif edin ki, kimsə növbədə dayanan müştərilərə yaxınlaşaraq problemi və bunun nə qədər vaxt aparacağını izah etsin. Bu, nağd pulu olmayan müştərilərin boşuna növbədə gözləməsinin qarşısını alacaq.",
+                verdict: "most",
+                explanation: "Ən effektiv cavabdır. İT problemini özünüz həll edə bilməsəniz də, müştərilərə maksimum məlumat verirsiniz ki, gözləmək yaxud sonra qayıtmaq barədə qərar qəbul etsinlər."
+            },
+            {
+                key: "B",
+                text: "Müştərilərə xidmət göstərməyə davam edin və kredit kartı ödənişlərinin mümkün olmamasına görə onlardan sadəcə fərdi qaydada üzr istəyin.",
+                verdict: "intermediate",
+                explanation: "Çox da uyğun cavab deyil. Alıcıların növbəyə durmasına icazə verirsiniz, lakin onlar kassaya çatanda ödəniş edə bilməyəcəklərini öyrənəcəklər. Bu, qəzəbli və narazı müştərilər yaradacaq."
+            },
+            {
+                key: "C",
+                text: "Komanda rəhbərindən nə etmək lazım olduğunu soruşun.",
+                verdict: "intermediate",
+                explanation: "Ağlabatan cavabdır, çünki rəhbərdən təlimat almaq bütün həmkarlarınızla eyni və koordinasiyalı yanaşma nümayiş etdirməyinizi təmin edəcək."
+            },
+            {
+                key: "D",
+                text: "Fürsətdən istifadə edərək günorta çay fasilənizə çıxın, çünki sistem işləyənə qədər müştərilərin çoxu onsuz da sonra qayıtmalı olacaq.",
+                verdict: "least",
+                explanation: "Ən az effektiv cavabdır. Bütün müştərilərin sonra qayıdacağını dəqiq bilmirsiniz və çətin vəziyyətdə həmkarlarınızı və komanda rəhbərinizi köməksiz qoyub gedirsiniz."
+            }
+        ]
+    },
+    {
+        id: 5,
+        scenarioId: 2,
+        scenarioBadge: "Ssenari 2",
+        scenarioTitle: "İnsan Resursları (HR) Köməkçisi (Princess Aurora General Hospital)",
+        scenarioDesc: "Siz Princess Aurora General Hospital NHS Trust-ın İnsan Resursları (HR) şöbəsində İnsan Resursları Köməkçisisiniz. Rolunuz işə qəbulu təşkil etmək, təlim kursları sifariş etmək, intizam araşdırmalarında katiblik dəstəyi göstərmək və şəxsi heyətin qeydlərini yeniləmək kimi inzibati tapşırıqları yerinə yetirməkdir. Siz Fiona Potter adlı HR Menecerinə hesabat verirsiniz.",
+        situationTitle: "Situasiya 1: Müsahibədən Narazı Qalan Namizəd",
+        situationText: "Xəstəxanaya yeni Məsləhətçi Oftalmoloq (göz həkimi) təyin etmək üçün müsahibədən üç gün keçib. İki daxili və bir xarici namizəd iştirak edib və vəzifə daxili namizədlərdən biri olan Vijay Sinqhə verilib. Vijay iş təcrübəsi (illəri) baxımından digərlərindən geri qalsa da, akademik cəhətdən daha parlaq və güclü liderlik bacarıqlarına malik hesab edilib. Daxili rədd edilmiş namizəd cənab Brian Bouler bu səhər ofisinizə gələrək qəzəblə şikayət edir. O, qərardan çox narazıdır və ədalətsizliyə uğradığını hiss edir, çünki onun təcrübəsi Vijaydan çoxdur. Məktubları siz yazmısınız.",
+        competency: "İnsanlar və Münasibət Bacarıqları (People & Relationship Skills)",
+        format: "ranked",
+        options: [
+            {
+                key: "A",
+                text: "Cənab Boulerə prosesin ədalətli olduğunu və xəstəxananın ən uzun müddət işləyəni deyil, iş üçün ən uyğun şəxsi təyin etməli olduğunu söyləyin.",
+                correctRank: 3,
+                explanation: "3-cü dərəcəli cavab (orta). Bu tamamilə doğru olsa da, bir qədər kobud və həssaslıqdan uzaqdır. Cənab Bouleri xəstəxanadan tamamilə soyuda bilərsiniz."
+            },
+            {
+                key: "B",
+                text: "Müsahibə komissiyasının cənab Sinqhin akademik cəhətdən daha yaxşı olduğunu və daha yaxşı liderlik bacarıqlarına malik olduğunu düşündüyünü, qərarın təkcə təcrübəyə əsaslanmadığını bildirin.",
+                correctRank: 4,
+                explanation: "4-cü dərəcəli cavab (Ən az effektiv). Köməkçi olduğunuz üçün müştəriyə birbaşa belə rəylər vermək sizin rolunuz deyil. Onu müsahibəni aparanlara yönləndirməlisiniz."
+            },
+            {
+                key: "C",
+                text: "Cənab Boulerə onun niyə məyus olduğunu anladığınızı söyləyin. Prosesin tamamilə ədalətli olduğunu qeyd edin və əgər istəsə, müsahibəni aparan rəhbərlərdən geniş rəy və inkişaf məsləhətləri ala biləcəyini bildirin.",
+                correctRank: 1,
+                explanation: "1-ci dərəcəli cavab (Ən effektiv). Müştərinin hisslərinə empatiya göstərirsiniz, lakin prosesin ədalətsiz olması iddiasını dəstəkləmirsiniz, onu peşəkar rəy almağa sövq edirsiniz."
+            },
+            {
+                key: "D",
+                text: "Ona bir fincan çay təklif edin və niyə narahat olduğunu başa düşdüyünüzü deyin. Bir az gileylənməsinə və ürəyini boşaltmasına icazə verin.",
+                correctRank: 2,
+                explanation: "2-ci dərəcəli cavab (yaxşı). Səmimi və anlayışlı davranırsınız, lakin bu, problemi peşəkar şəkildə həll etmir və onun gələcək inkişafına birbaşa kömək etmir."
+            }
+        ]
+    },
+    {
+        id: 6,
+        scenarioId: 2,
+        scenarioBadge: "Ssenari 2",
+        scenarioTitle: "İnsan Resursları (HR) Köməkçisi (Princess Aurora General Hospital)",
+        scenarioDesc: "Siz Princess Aurora General Hospital NHS Trust-ın İnsan Resursları (HR) şöbəsində İnsan Resursları Köməkçisisiniz.",
+        situationTitle: "Situasiya 2: Təlim Təchizatçılarının Seçilməsi",
+        situationText: "Fiona Potter qeyri-tibbi heyətin ilkin hazırlıq təlimi kursunun xarici təchizatçıya verilməsi və yenilənməsi layihəsini sizə həvalə edib. Müxtəlif şirkətlərdən təkliflər qəbul etmisiniz; 20 şirkət tenderdə iştirak edir və Fiona onlardan 5-ni təqdimat üçün qısa siyahıya salmağı tapşırıb. Bunun üçün cəmi 2 gün vaxtınız var.",
+        competency: "Təhlil və Qərar Qəbul Etmə (Analysis & Decision-Making)",
+        format: "ranked",
+        options: [
+            {
+                key: "A",
+                text: "Bütün 20 təchizatçını cədvələ yerləşdirin və əlinizdə olan hər bir amilə görə (məsələn, qiymət, təlimçilərin təcrübəsi) 1-dən 5-ə qədər bal verin.",
+                correctRank: 2,
+                explanation: "2-ci dərəcəli cavab. Sistemli yanaşmadır, lakin qiymətləndirdiyiniz faktorların prioritetini təyin etmək üçün rəhbərliyin (Fiona və HR Direktoru) çəkisini və rəyini öyrənməlisiniz."
+            },
+            {
+                key: "B",
+                text: "Şirkətləri qiymətlərinə görə sıralayın və ən ucuz 5 təklifi qısa siyahıya salın, çünki NHS hər zaman xərclərə qarşı həssas olmalıdır.",
+                correctRank: 4,
+                explanation: "4-cü dərəcəli cavab (Ən az effektiv). Qiymət vacib olsa da, keyfiyyət və digər amilləri nəzərə almasanız, təlimin nəticəsi fəlakətli ola bilər. Dəyər təkcə ucuzluqla ölçülmür."
+            },
+            {
+                key: "C",
+                text: "Fiona və HR direktorundan iddiaçıların qısa siyahıya salınması üçün əsas meyarların nələr olması barədə fikirlərini soruşun və bu məlumatı qərar qəbul etmək üçün istifadə edin.",
+                correctRank: 1,
+                explanation: "1-ci dərəcəli cavab (Ən effektiv). Fiona illərdir bu kursu idarə edir və tələbləri yaxşı bilir. Onların rəylərini birləşdirərək ən doğru və əsaslandırılmış seçimi edə bilərsiniz."
+            },
+            {
+                key: "D",
+                text: "Alpston Universitet Xəstəxanasında bənzər bir layihə icra etmiş həmkarınıza e-poçt göndərin və iddiaçıları necə seçmək barədə ondan məsləhət istəyin.",
+                correctRank: 3,
+                explanation: "3-cü dərəcəli cavab. Praktiki məsləhət ala bilsəniz də, o, bu layihənin birbaşa sifarişçisi deyil və sizin xəstəxananın spesifik tələblərini bilmir."
+            }
+        ]
+    },
+    {
+        id: 7,
+        scenarioId: 2,
+        scenarioBadge: "Ssenari 2",
+        scenarioTitle: "İnsan Resursları (HR) Köməkçisi (Princess Aurora General Hospital)",
+        scenarioDesc: "Siz Princess Aurora General Hospital NHS Trust-ın İnsan Resursları (HR) şöbəsində İnsan Resursları Köməkçisisiniz.",
+        situationTitle: "Situasiya 3: Tibb Bacısı Köməkçilərinin İşə Qəbulu",
+        situationText: "Xəstəxana son vaxtlar tibb bacısı köməkçilərinin şəhər kənarındakı özəl Sunnyside xəstəxanasına (daha yüksək maaş və üzgüçülük hovuzu kimi imkanlar səbəbindən) getməsi ilə əlaqədar yüksək kadr axınından əziyyət çəkir. Sizdən 10 yeni köməkçi cəlb etmək üçün kampaniya qurmaq tapşırılıb. Əsas uğur meyarı yeni işçilərin sadiqliyi ('staying power') olacaq. Müsahibələrə qədər 4 həftəniz var.",
+        competency: "Planlaşdırma və Təşkilatçılıq (Planning & Organising)",
+        format: "ranked",
+        options: [
+            {
+                key: "A",
+                text: "Dərhal bütün müvafiq yerli mediada və onlayn elan yerləşdirin. Sonra namizədlər arasından NHS-ə sadiq qalacaq insanları müəyyən edəcək seçim prosesi hazırlamağa vaxt ayırın.",
+                correctRank: 2,
+                explanation: "2-ci dərəcəli cavab. Sürətli addımdır, lakin əvvəlcədən elanın mətnini düzgün hazırlamasanız, yüzlərlə yararsız müraciəti ələmək üçün çox vaxt itirməli olacaqsınız."
+            },
+            {
+                key: "B",
+                text: "HR-dakı həmkarınızdan keçən dəfə bu işə qəbul prosesinin necə aparıldığını soruşun və həmin plana əməl edin.",
+                correctRank: 4,
+                explanation: "4-cü dərəcəli cavab (Ən az effektiv). Əvvəlki proses uğursuz olub və kadr axınına mane ola bilməyib, buna görə də dəyişiklik mütləqdir (baxmayaraq ki, vaxt qrafikini nümunə götürmək olar)."
+            },
+            {
+                key: "C",
+                text: "Müsahibə tarixindən geriyə doğru plan qurun və elanın nə vaxt yerləşdirilməli olduğunu müəyyən edin. Aradakı vaxtda NHS dəyərlərinə sadiq qalacaq və uzunmüddətli işləmək istəyən namizədləri cəlb edəcək elan mətni yazın.",
+                correctRank: 1,
+                explanation: "1-ci dərəcəli cavab (Ən effektiv). Son hədəfi nəzərdə saxlayaraq geriyə doğru plan qurursunuz və əsas uğur meyarı olan 'işçilərin mağazada saxlanılması' amilinə elanın mətnində diqqət yetirirsiniz."
+            },
+            {
+                key: "D",
+                text: "Yerli işəgötürmə agentliklərindən işdən tez çıxmaq ehtimalı az olan insanları cəlb etmək üçün elan mətni hazırlamaqda məsləhət istəyin.",
+                correctRank: 3,
+                explanation: "3-cü dərəcəli cavab. Agentliklərdən məsləhət ala bilsəniz də, bu proses əlavə xərc yaradacaq və namizədləri müsahibə tarixinə qədər çatdırmağa vaxt məhdudiyyəti yarada bilər."
+            }
+        ]
+    },
+    {
+        id: 8,
+        scenarioId: 2,
+        scenarioBadge: "Ssenari 2",
+        scenarioTitle: "İnsan Resursları (HR) Köməkçisi (Princess Aurora General Hospital)",
+        scenarioDesc: "Siz Princess Aurora General Hospital NHS Trust-ın İnsan Resursları (HR) şöbəsində İnsan Resursları Köməkçisisiniz.",
+        situationTitle: "Situasiya 4: İlkin Hazırlıq Təlimində Yer Çatışmazlığı",
+        situationText: "Yeni ilkin hazırlıq təlimi kursu çox yaxşı nəticə verib. Təlim verən şirkətin əlavə kurs keçmək imkanı yoxdur. Xəstəxana idicə 8 yeni tibb bacısı köməkçisi işə götürüb. Tibb bacıları şöbəsinin rəhbəri Sally O'Hara yeni işçilərin hamısının işə başladıqdan sonra 2 həftə ərzində təlim keçməsini tələb edir, lakin növbəti 3 ayın bütün yerləri tam doludur. Fiona ilə danışdıqdan sonra rəhbərliyin qərarı odur ki, xüsusi rəftar olmayacaq və onlar 4 ay sonrakı boş yerlərə yazılacaqlar. İndi bunu Sally-yə çatdırmalısınız.",
+        competency: "Ünsiyyət, Təsir Etmə və Danışıqlar (Communicating, Influencing & Negotiating)",
+        format: "ranked",
+        options: [
+            {
+                key: "A",
+                text: "Səllidən işçilərini növbəti üç ay ərzində yerləşdirə bilmədiyiniz üçün səmimi şəkildə üzr istəyin. Kursları izləyəcəyinizi və hər hansı yer ləğvi olarsa, onun işçilərini siyahının ən başına qoyacağınızı bildirin.",
+                correctRank: 1,
+                explanation: "1-ci dərəcəli cavab (Ən effektiv). Bu yanaşma göstərir ki, siz Sally və onun işçilərinə həqiqətən əhəmiyyət verirsiniz və əlinizdən gələn hər şeyi edirsiniz."
+            },
+            {
+                key: "B",
+                text: "Səlliyə bildirin ki, onun işçiləri xəstəxanadakı digər işçilərdən daha üstün deyil və bir neçə aydan sonra yer olanda növbəyə salınacaqlar.",
+                correctRank: 4,
+                explanation: "4-cü dərəcəli cavab (Ən az effektiv). Çox kobud və qeyri-peşəkar bir yanaşmadır. Xəstəxananın yüksək rütbəli rəhbərlərindən birini tamamilə özünüzdən soyudursunuz."
+            },
+            {
+                key: "C",
+                text: "Səllidən üzr istəyin və onun yeni işçilərinə ilk mövcud olan aylarda yer ayırdığınızı bildirin, lakin növbəti üç ayın bütün iştirakçılarını nəzərdən keçirdiyinizi və heç birini dəyişdirə bilmədiyinizi izah edin.",
+                correctRank: 2,
+                explanation: "2-ci dərəcəli cavab. Üzrxahlıq edirsiniz və onun müraciətini ciddi şəkildə araşdırdığınızı faktlarla nümayiş etdirirsiniz."
+            },
+            {
+                key: "D",
+                text: "Səllidən üzr istəyin və yer olmadığını izah edin. Təklif edin ki, yeni işçilər üçün fərdi şəkildə ilkin təlim sessiyalarını özü keçirsin.",
+                correctRank: 3,
+                explanation: "3-cü dərəcəli cavab. Üzrxahlıq etsəniz də, heç bir əlavə kömək təklif etmirsiniz və onun iş yükünü daha da artırırsınız."
+            }
+        ]
+    },
+    {
+        id: 9,
+        scenarioId: 3,
+        scenarioBadge: "Ssenari 3",
+        scenarioTitle: "Məzun Təcrübəçi (Sutton & Sykes)",
+        scenarioDesc: "Siz Böyük Britaniya və Avropa bazarı üçün məişət elektrik malları istehsal edən 'Sutton & Sykes' şirkətində Məzun Təcrübəçisiniz. Şirkətin müxtəlif bölmələrində 6 aylıq rotasiyalar keçirsiniz və hazırda İnsan Resursları (HR) bölməsindəsiniz. HR komandası Alton, Hampshire-də yerləşir.",
+        situationTitle: "Situasiya 1: İşə Qəbul Xidmətlərinin Seçilməsi",
+        situationText: "Sizə tapşırılan ilk layihələrdən biri Sutton & Sykes tərəfindən alınan işə qəbul xidmətlərinin nəzərdən keçirilməsidir. Ən yaxşı 'qiymət-keyfiyyət' nisbətini təmin edəcək təchizatçı ilə yeni 12 aylıq müqavilə imzalamalısınız. Bu gün qərar qəbul etmək üçün 1 saatlıq iclasınız var. Maliyyəçi həmkarınız A təchizatçısını (ən ucuz), tədqiqat rəhbəri B təchizatçısını (şəxsi münasibəti var), HR rəhbəri isə C təchizatçısını ('gold standard' - ən yaxşı təcrübə) dəstəkləyir.",
+        competency: "Ünsiyyət, Təsir Etmə və Danışıqlar (Communicating, Influencing & Negotiating)",
+        format: "most_least",
+        options: [
+            {
+                key: "A",
+                text: "İclası həmkarlarınızın fikirlərini soruşaraq açın və iclasın sonuna qədər təbii bir konsensusun yaranacağı sərbəst müzakirəyə şərait yaradın.",
+                verdict: "least",
+                explanation: "Ən az effektiv cavabdır, çünki fərqli maraqları olan həmkarlarınızın razılığa gələcəyinə heç bir zəmanət yoxdur və iclas heç bir qərar qəbul edilmədən bitə bilər."
+            },
+            {
+                key: "B",
+                text: "İlk 15 dəqiqə ərzində sərbəst müzakirəyə icazə verin, sonra qərarın vaxtında qəbul edilməsi üçün tədricən müəyyən struktur təklif edin (məsələn: meyarların razılaşdırılması, variantların təhlili).",
+                verdict: "most",
+                explanation: "Ən effektiv cavabdır, çünki yüksək vəzifəli həmkarlarınıza özlərini ifadə etmək üçün vaxt verirsiniz, sonra isə qrupu qərar qəbul etməyə və fikir ayrılıqlarını aradan qaldırmağa istiqamətləndirirsiniz."
+            },
+            {
+                key: "C",
+                text: "Başlanğıcda üç variantı təhlil etmək üçün müəyyən meyarlardan istifadə etməyi təklif edin, vaxtı ciddi şəkildə bölüşdürün: meyarların təsdiqi, müzakirə və yekun qərar.",
+                verdict: "intermediate",
+                explanation: "Ağlabatan cavabdır, lakin yüksək vəzifəli həmkarlarınız sizin kimi gənc bir işçinin iclası bu dərəcədə sərt idarə etməsindən narahat ola bilər və müqavimət göstərərlər."
+            },
+            {
+                key: "D",
+                text: "İclasın əvvəlində öz fikrinizi tam aydın və əminliklə bildirin, hər bir variantın müsbət və mənfi cəhətlərini sadalayın, sonra onların rəylərini soruşun.",
+                verdict: "intermediate",
+                explanation: "Münasib cavab deyil. Həmkarlarınız sizin artıq qərar verdiyinizi və onların fikrinə açıq olmadığınızı düşünə bilərlər. Dinləməkdən çox danışmağa vaxt sərf etmiş olursunuz."
+            }
+        ]
+    },
+    {
+        id: 10,
+        scenarioId: 3,
+        scenarioBadge: "Ssenari 3",
+        scenarioTitle: "Məzun Təcrübəçi (Sutton & Sykes)",
+        scenarioDesc: "Siz Böyük Britaniya və Avropa bazarı üçün məişət elektrik malları istehsal edən 'Sutton & Sykes' şirkətində Məzun Təcrübəçisiniz.",
+        situationTitle: "Situasiya 2: Maliyyə Şöbəsində İşə Hazırlıq",
+        situationText: "Növbəti rotasiyanız olacaq Maliyyə şöbəsinin rəhbəri Sally Arkwright sizə e-poçt göndərərək şöbəyə yanvar ayında – ən gərgin büdcə planlaması dövründə qoşulacağınızı xəbərdar edib. O, sizin əvvəllər maliyyə sahəsində işləmədiyinizi bilir və işə sürətli adaptasiya olmağınızı istəyir.",
+        competency: "Nəticəyə Nail Olmaq Əzmi (Drive to Achieve Results)",
+        format: "most_least",
+        options: [
+            {
+                key: "A",
+                text: "İnternetdə biznesin planlaşdırılması, büdcələşdirmə və mənfəət/zərər hesablanması barədə məlumat axtarın.",
+                verdict: "intermediate",
+                explanation: "Çox da uyğun cavab deyil. Sally-dən işləyəcəyiniz spesifik layihələr haqqında dəqiq məlumat almadan bu geniş sahə üzrə araşdırmanızı fokuslaya bilməyəcəksiniz."
+            },
+            {
+                key: "B",
+                text: "Səlliyə e-poçt yazın və fəaliyyətinizə başlamazdan əvvəl işləyəcəyiniz layihələr haqqında ətraflı məlumat almaq üçün onunla fərdi görüş təklif edin.",
+                verdict: "most",
+                explanation: "Ən effektiv cavabdır, çünki fəaliyyətə başlamazdan əvvəl ən çox detalı öyrənə bilərsiniz. Bu, sizə işə başlamazdan əvvəl bacarıqlarınızı artırmaq üçün hədəfli hazırlaşmaq imkanı verəcək."
+            },
+            {
+                key: "C",
+                text: "Səlliyə təşəkkür edin və dekabrda – fəaliyyətə başlamazdan bir neçə həftə əvvəl layihələrin xüsusi detallarını öyrənmək üçün onunla əlaqə saxlayacağınızı bildirin.",
+                verdict: "least",
+                explanation: "Ən az effektiv cavabdır. Dekabra qədər gözləməklə hazırlıq üçün çox qiymətli vaxtı itirirsiniz. Halbuki hazırlığa aylar öncədən başlamaq olardı."
+            },
+            {
+                key: "D",
+                text: "Səlliyə e-poçt yazaraq erkən xəbərdarlıq üçün təşəkkür edin. Yanvarda işləyə biləcəyiniz layihələr haqqında hər hansı məlumat təqdim edə biləcəyini soruşun.",
+                verdict: "intermediate",
+                explanation: "Ağlabatan cavabdır, bəzi yaxşı məlumatlar ala bilərsiniz. Lakin daha çox vaxt sərf edib Sally ilə fərdi görüşmək daha təsirli olardı."
+            }
+        ]
+    },
+    {
+        id: 11,
+        scenarioId: 3,
+        scenarioBadge: "Ssenari 3",
+        scenarioTitle: "Məzun Təcrübəçi (Sutton & Sykes)",
+        scenarioDesc: "Siz Böyük Britaniya və Avropa bazarı üçün məişət elektrik malları istehsal edən 'Sutton & Sykes' şirkətində Məzun Təcrübəçisiniz.",
+        situationTitle: "Situasiya 3: Üst-üstə Düşən Tapşırıqlar və Zaman İdarəçiliyi",
+        situationText: "Bazar ertəsi saat 09:00-dur. Rəhbəriniz Maria Alvarez hesabatın son təslim tarixini sabaha deyil, bu günün sonuna keçirib. Hesabata hələ başlamamısınız (4-5 saat çəkəcək). Eyni zamanda həmkarınız xəstədir və rəhbəriniz onun əvəzinə saat 11:00-da Sauthemptonda (1 saatlıq yol) vacib iclasa getməyinizə razıdır. Həmçinin Məzun İnkişaf Menecerinin göndərdiyi 4 vərəqlik sorğu vərəqini bu günün sonuna qədər təhvil verməlisiniz.",
+        competency: "Planlaşdırma və Təşkilatçılıq (Planning & Organising)",
+        format: "most_least",
+        options: [
+            {
+                key: "A",
+                text: "Maniyə ilə danışın və izah edin ki, Sauthemptondakı iclasa getsəniz, hesabatı vaxtında çatdıra bilməyəcəksiniz, buna görə də iclasa başqa birinin getməsi daha yaxşı olar. İnkişaf menecerinə yazın ki, rəyləri sabah çatdıracaqsınız.",
+                verdict: "intermediate",
+                explanation: "Uyğun cavab deyil, çünki vaxtı düzgün idarə etməklə həm vacib iclasda iştirak edə bilərsiniz, həm də hesabatı tamamlaya bilərsiniz (bax: D variantı)."
+            },
+            {
+                key: "B",
+                text: "İclasa gedəcəyinizi və hesabatı bitirmək üçün günortadan sonra ofisə qayıdacağınızı bildirin. İnkişaf menecerinə yazın ki, rəyləri sabah günorta çatdıracaqsınız.",
+                verdict: "intermediate",
+                explanation: "Ağlabatan cavabdır, lakin iclasın müddətini əvvəlcədən məhdudlaşdırmasanız, günortadan sonra hesabatı tamamlamaq üçün vaxtınız çatmayacaq."
+            },
+            {
+                key: "C",
+                text: "Əvvəlcə inkişaf meneceri üçün rəy vərəqini doldurun, çünki bu ən uzun müddətdir gözləyən işdir. Mariyaya iclasa gedə bilməyəcəyinizi deyin və günün qalan hissəsini onun hesabatını yazmağa sərf edin.",
+                verdict: "least",
+                explanation: "Ən az effektiv cavabdır, çünki menecerin rəy sorğusu zaman baxımından ən az kritik olanıdır (təlimçilər 3 aydan sonra gələcək). Ən vacib işləri kənara qoyursunuz."
+            },
+            {
+                key: "D",
+                text: "İclasa getməyə razılaşın və Mariyaya gedəcəyinizi bildirin. İnkişaf menecerindən sorğunu sabah vermək üçün icazə alın. Sauthempton rəhbərinə zəng edib iclası 1 saatla məhdudlaşdırmalı olduğunuzu deyin. Saat 9-10 arası hesabatı yazmağa başlayın, iclasa gedib saat 13:00-da Altona qayıdın və hesabatı tamamlayın.",
+                verdict: "most",
+                explanation: "Ən effektiv cavabdır. İclasın müddətini məhdudlaşdırmaqla hər iki təxirəsalınmaz və vacib tapşırığı vaxtında yerinə yetirirsiniz. Vaxt kritik olmayan sorğunu isə sabaha keçirirsiniz."
+            }
+        ]
+    },
+    {
+        id: 12,
+        scenarioId: 3,
+        scenarioBadge: "Ssenari 3",
+        scenarioTitle: "Məzun Təcrübəçi (Sutton & Sykes)",
+        scenarioDesc: "Siz Böyük Britaniya və Avropa bazarı üçün məişət elektrik malları istehsal edən 'Sutton & Sykes' şirkətində Məzun Təcrübəçisiniz.",
+        situationTitle: "Situasiya 4: Etik Müştəri ilə İclas",
+        situationText: "Rəhbəriniz Maria ilə birlikdə potensial böyük müştəri olan Jack Lanis Stores (JLS) nümayəndələri ilə iclasdasınız. JLS işçilərin etik və ədalətli rəftarına, maaşlarına çox önəm verir. Əgər iclas yaxşı keçərsə, böyük müqavilə imzalana bilər. İclasın ortasında JLS-in baş alıcısı Nazib Xan sizə, yeni gələn biri kimi müraciət edərək Sutton & Sykes haqqında şəxsi fikirlərinizi soruşur.",
+        competency: "İnsanlar və Münasibət Bacarıqları (People & Relationship Skills)",
+        format: "most_least",
+        options: [
+            {
+                key: "A",
+                text: "Cənab Xana fikrinizi soruşduğu üçün təşəkkür edin və xüsusilə nə haqqında eşitmək istədiyini dəqiqləşdirin, sonra marağına mümkün qədər səmimi və müsbət cavab verin.",
+                verdict: "most",
+                explanation: "Ən effektiv cavabdır, çünki suala cavab verməzdən əvvəl onun nəyi öyrənmək istədiyini dəqiqləşdirirsiniz və beləliklə cavabınızı onun maraqlarına uyğun şəkildə formalaşdırırsınız."
+            },
+            {
+                key: "B",
+                text: "Cənab Xana fikrinizi soruşduğu üçün təşəkkür edin və hər zaman Sutton & Sykes-in ədalətli və etik məşğulluq strukturuna uyğun rəftar gördüyünüzü bildirin, ona şirkətin daxili siyasət sənədini nümayiş etdirin.",
+                verdict: "intermediate",
+                explanation: "Çox uyğun cavab deyil, çünki o, rəsmi sənədlərdən çox sizdən fərdi, səmimi bir münasibət eşitmək istəyir. Sənəd göstərmək rəsmiyyət hissi yaradır."
+            },
+            {
+                key: "C",
+                text: "Bir məzun təcrübəçi kimi işə qəbul, seçim, təlim və idarəetməniz barədə səmimi və müsbət məlumat verin; ədalətli və etik davranışlara dair bir neçə xüsusi nümunə göstərin.",
+                verdict: "intermediate",
+                explanation: "Ağlabatan cavabdır, lakin Nazib Xanın nəyi eşitmək istədiyini dəqiqləşdirmədən fərziyyə irəli sürürsünüz. Bəlkə o, sistemlərdən çox sizin şəxsi motivasiyanızla maraqlanır."
+            },
+            {
+                key: "D",
+                text: "Cənab Xana fikrinizi soruşduğu üçün təşəkkür edin, lakin görüşün bütün işçilər üçün siyasət haqqında olmalı olduğunu və təcrübənizin ümumi mənzərəni əks etdirməyə biləcəyini qeyd edərək ətraflı danışmaqdan imtina edin.",
+                verdict: "least",
+                explanation: "Ən az effektiv cavabdır, çünki müştərinin səmimi fərdi baxış bucağı əldə etmək marağına tamamilə cavabsız qalır və soyuq təəssürat yaradır."
+            }
+        ]
+    },
+    {
+        id: 13,
+        scenarioId: 4,
+        scenarioBadge: "Ssenari 4",
+        scenarioTitle: "Mətbəx Qabları Bölməsində Satış Köməkçisi (Jack Lanis Stores)",
+        scenarioDesc: "Siz Leamouth-on-Sea-də yerləşən Jack Lanis Stores (JLS) filialının mətbəx qabları bölməsində pərakəndə satış köməkçisiniz. JLS etik və məsuliyyətli pərakəndə satıcı kimi tanınır. Rolunuz müştəriləri qarşılamaq, məhsullar barədə məsləhət vermək, rəfləri doldurmaq, səliqə-sahmanı qorumaq və kassada əməliyyatları icra etməkdir.",
+        situationTitle: "Situasiya 1: Qəbzsiz Mikser Qaytarması",
+        situationText: "Bir müştəri sizə yaxınlaşır. O, çox əsəbidir. 3 ay əvvəl aldığı elektrikli mikseri qaytarmaq istəyir. İki dəfə istifadə etdiyini və çırpıcı hissəsinin qırıldığını söyləyir. Müştərinin qəbzi yoxdur. JLS-in qaytarma siyasəti 28 gündür, bundan sonra ise sübut kimi qəbz tələb olunur. Müştəri bunu eşidəndə qışqırmağa başlayır.",
+        competency: "Xidmət Etikası (Service Ethos)",
+        format: "rated",
+        options: [
+            {
+                key: "A",
+                text: "Müştərinin məyusluğunu anladığınızı söyləyin, üzr istəyin və Müştəri Xidmətləri masasına gəlməsini xahiş edin. Supervisor ilə danışıb problemi həll etməyə çalışacağınızı bildirin.",
+                correctRating: "very",
+                explanation: "Çox Effektiv cavabdır. Müştərinin narahatlığını qəbul edir, üzr istəyir və problemi həll etmək üçün fəal şəkildə çalışacağınızı nümayiş etdirirsiniz."
+            },
+            {
+                key: "B",
+                text: "Üzr istəyin və qəbzi olmadığı üçün edə biləcəyiniz heç bir şey olmadığını söyləyin. Bu qaydanın oğurluq və digər mağazalardan alınan malların qarşısını almaq üçün qoyulduğunu izah edin.",
+                correctRating: "ineffective",
+                explanation: "Qeyri-effektiv cavabdır. Üzr istəsəniz də, kömək etməkdən imtina edərək müştərini daha da qəzəbləndirirsiniz."
+            },
+            {
+                key: "C",
+                text: "Onun mikseri səhv yemək hazırlamaq üçün istifadə etdiyini təklif edin. Bəlkə pudinq qarışığı çox qatı idi? İstifadədən əvvəl təlimatları düzgün oxuyub-oxumadığını soruşun.",
+                correctRating: "counterproductive",
+                explanation: "Əks-effektiv cavabdır. Müştərini günahlandırmaq həm sübutsuz qeyri-peşəkarlıqdır, həm də münaqişəni daha da alovlandıracaq."
+            },
+            {
+                key: "D",
+                text: "Müştəridən mikseri sizə gösterməsini xahiş edin və onu təmir etmək üçün edə biləcəyiniz bir şey olub-olmadığını yoxlayın.",
+                correctRating: "slightly",
+                explanation: "Azca Effektiv cavabdır. Müştəri ilə fəal məşğul olursunuz, lakin onun hisslərini görməzdən gəlirsiniz və o, çox güman ki, təmir deyil, yeni məhsul yaxud pulunu geri istəyir."
+            },
+            {
+                key: "E",
+                text: "Müştəridən üzr istəyin və alışın qeyd olunduğu kredit kartı çıxarışının 'satınalma sübutu' kimi kifayət edə biləcəyini təklif edin, rəhbərinizlə yoxlayacağınızı bildirin.",
+                correctRating: "effective",
+                explanation: "Effektiv cavabdır. Nəzakətli davranırsınız və qaydalar daxilində müştəriyə ağlabatan alternativ həll yolu təklif edirsiniz."
+            }
+        ]
+    },
+    {
+        id: 14,
+        scenarioId: 4,
+        scenarioBadge: "Ssenari 4",
+        scenarioTitle: "Mətbəx Qabları Bölməsində Satış Köməkçisi (Jack Lanis Stores)",
+        scenarioDesc: "Siz Leamouth-on-Sea-də yerləşən Jack Lanis Stores (JLS) filialının mətbəx qabları bölməsində pərakəndə satış köməkçisiniz.",
+        situationTitle: "Situasiya 2: Qabyuyan Seçimində Müştəriyə Kömək",
+        situationText: "Saat 10:00-dur. Müştəri son 45 dəqiqədir qabyuyan maşınlara baxır və sizdən məsləhət istəyir. Onun 3 uşağı var və həyat yoldaşı evdən işləyir. Büdcəsi 300 funtdur. 299 funtluq model 2-3 il tab gətirəcək, lakin bu gün kampaniyası bitən və normal qiyməti 499 funt olan 350 funtluq superior model isə 5-8 il tab gətirə bilər. Müştəri büdcəni 50 funt aşmaqdan narahatdır və yoldaşı ilə məsləhətləşmək istəyir.",
+        competency: "Başqalarına Təsir Etmək (Influencing Others)",
+        format: "rated",
+        options: [
+            {
+                key: "A",
+                text: "Onun narahatlığını anladığınızı deyin və həyat yoldaşına zəng edərək müzakirə etməsini təklif edin. Daha baha modelin ömrünün ikiqat çox olacağını və uzunmüddətli qənaəti (6 il üçün 600 funt sterlinqə qarşı 350 funt sterlinq) izah edin.",
+                correctRating: "very",
+                explanation: "Çox Effektiv cavabdır. Müştəriyə dürüst, dəqiq və təzyiqsiz məsləhət verirsiniz, həmçinin həyat yoldaşını qərar verməyə cəlb etmək üçün praktiki çıxış yolu təklif edirsiniz."
+            },
+            {
+                key: "B",
+                text: "Tez qərar verməsə, bu fürsəti qaçıracağından çox narahat olduğunuzu söyləyin.",
+                correctRating: "counterproductive",
+                explanation: "Əks-effektiv cavabdır. Müştəriyə süni şəkildə təzyiq göstərirsiniz ki, bu da onu mağazanızdan tamamilə uzaqlaşdıra bilər."
+            },
+            {
+                key: "C",
+                text: "Müştərini qərarı barədə tək düşünməyə buraxın və uzaqlaşın.",
+                correctRating: "ineffective",
+                explanation: "Qeyri-effektiv cavabdır. Müştərini çətin qərar anında köməksiz qoyursunuz və onun alış etməsinə heç bir dəstək göstərmirsiniz."
+            },
+            {
+                key: "D",
+                text: "Hər zaman ucuz deyil, keyfiyyətli məhsul almağın daha yaxşı olduğunu söyləyin.",
+                correctRating: "slightly",
+                explanation: "Azca Effektiv cavabdır. Ümumi məsləhət verirsiniz, lakin bu çox şablon və qeyri-konkretdir, baxmayaraq ki zərərsizdir."
+            },
+            {
+                key: "E",
+                text: "Müştəriyə daha bahalı, lakin daha keyfiyyətli maşını alarsa edəcəyi 'real' qənaəti xatırladın: 6 il ərzində iki ucuz maşın üçün 600 funt əvəzinə 350 funt ödəyəcək.",
+                correctRating: "effective",
+                explanation: "Effektiv cavabdır. Dürüst, riyazi və birbaşa qənaət təhlili aparmaqla müştəriyə doğru qərar verməkdə təsir edirsiniz."
+            }
+        ]
+    },
+    {
+        id: 15,
+        scenarioId: 4,
+        scenarioBadge: "Ssenari 4",
+        scenarioTitle: "Mətbəx Qabları Bölməsində Satış Köməkçisi (Jack Lanis Stores)",
+        scenarioDesc: "Siz Leamouth-on-Sea-də yerləşən Jack Lanis Stores (JLS) filialının mətbəx qabları bölməsində pərakəndə satış köməkçisiniz.",
+        situationTitle: "Situasiya 3: Bazar Ertəsi Səhər Gərginliyi",
+        situationText: "Bazar ertəsi saat 8:30-da işə gəlmisiniz. 16:30-da növbəniz bitir. Həmkarınız xəstədir və cəmi 2 nəfərsiniz. Gündəlikdə 5 fərqli tapşırıq var: 1) Çatdırılan gümüş qabları rəflərə yığmaq, 2) Mağaza rəflərini doldurmaq (şənbə çox gərgin keçib), 3) Müddəti bitmiş Sutton & Sykes displeyini sökmək, 4) Kassaları təmizləmək, 5) Saat 10-11-də olan şöbələrarası iclasa getmək. Supervisor saat 9:30-da gələcək.",
+        competency: "Planlaşdırma və Təşkilatçılıq (Planning & Organising)",
+        format: "rated",
+        options: [
+            {
+                key: "A",
+                text: "Həmkarınızla tapşırıqları tez müzakirə edin. Mağaza hələ açılmadığı üçün əvvəlcə çatdırılmanı həll etməyi təklif edin (saat 9-a qədər). 'Xüsusi təklif' ekranını sökməyi və kassanı təmizləməyi növbəti vacib işlər kimi müəyyənləşdirin. Başqa şöbədən iclasın qısa xülasəsini almağa çalışın ki, heç biriniz getməli olmayasınız.",
+                correctRating: "very",
+                explanation: "Çox Effektiv cavabdır. Tapşırıqlar mükəmməl şəkildə prioritetləşdirilir və iclasa getməyərək əlavə iş saatı qazanırsınız, lakin mühüm məlumatı başqalarından öyrənirsiniz."
+            },
+            {
+                key: "B",
+                text: "Dərhal xüsusi təklif ekranını sökməyə başlayın, hüquqi məsələlərdən narahatsınız. Həmkarınıza qalan tapşırıqları sonra müzakirə edəcəyinizi söyləyin.",
+                correctRating: "ineffective",
+                explanation: "Qeyri-effektiv cavabdır. Həmkarınız nə edəcəyini bilmir, həm də displey sökülməsini mağaza açıldıqdan sonra da təhlükəsiz şəkildə həyata keçirmək olardı."
+            },
+            {
+                key: "C",
+                text: "Supervisorunuzun gəlməsini gözləyin (saat 9:30) və tapşırıqların prioritetini və iclasa getməli olub-olmadığınızı ondan soruşun.",
+                correctRating: "counterproductive",
+                explanation: "Əks-effektiv cavabdır. Mağazanın açılışına qədər olan çox dəyərli bir saatı tamamilə boş yerə itirir və idarəetmədə məsuliyyətdən qaçırsınız."
+            },
+            {
+                key: "D",
+                text: "Müştərilərin çaşdırılmaması üçün dərhal xüsusi təklif ekranını sökün. Sonra kassa sahəsini təmizləyin və müştərilərə hazırlaşın. İclasa kimin gedəcəyinə qərar verin, digəri isə müştərilərlə məşğul olsun. Çatdırılma ilə günün qalan hissəsində məşğul olarsınız.",
+                correctRating: "slightly",
+                explanation: "Azca Effektiv cavabdır. Prioritetləşdirmə fəaliyyətidir, lakin şöbədə tək qalmağınız gərginlik zamanı effektivliyi azalda bilər."
+            },
+            {
+                key: "E",
+                text: "Mağaza hələ açılmadığı üçün əvvəlcə çatdırılma ilə məşğul olun (saat 9-a qədər). Saat 9:00-da həmkarınız kassanı təmizləyərkən, siz dərhal xüsusi təklif ekranını sökün. İclasa kimin gedəcəyinə qərar verin, digəri şöbədə qalıb müştərilərlə maraqlansın.",
+                correctRating: "effective",
+                explanation: "Effektiv cavabdır. Səliqəli və prioritetləşdirilmiş yanaşmadır, lakin bu gərgin gündə iclasa bir nəfəri göndərmək şöbədə işçi çatışmazlığı yarada bilər."
+            }
+        ]
+    },
+    {
+        id: 16,
+        scenarioId: 4,
+        scenarioBadge: "Ssenari 4",
+        scenarioTitle: "Mətbəx Qabları Bölməsində Satış Köməkçisi (Jack Lanis Stores)",
+        scenarioDesc: "Siz Leamouth-on-Sea-də yerləşən Jack Lanis Stores (JLS) filialının mətbəx qabları bölməsində pərakəndə satış köməkçisiniz.",
+        situationTitle: "Situasiya 4: Qəhvə Maşınları Barədə Məsləhət",
+        situationText: "Bir müştəri mağazada qəhvə maşınlarına baxır və hansını almalı olduğu barədə sizdən məsləhət istəyir. Qəhvə maşınları bir neçə parametrə görə fərqlənir: qəhvə forması (dənə, kapsul və s.), brend, quraşdırılma tipi və qiymət (140 funtdan 1150 funta qədər).",
+        competency: "Müştəriləri Anlamaq (Understanding Customers)",
+        format: "rated",
+        options: [
+            {
+                key: "A",
+                text: "Müştərinin nə qədər vaxtı olduğunu yoxlayın. Müştəri ilə ətraflı söhbət edin və maşını nə üçün istifadə edəcəyini, mətbəxinin necə olduğunu, dizayn və qiymətə münasibətini və hansı növ qəhvəni üstün tutduğunu öyrənin.",
+                correctRating: "very",
+                explanation: "Çox Effektiv cavabdır. Vaxtı nəzərə almaqla müştərinin bütün ehtiyaclarını və büdcəsini dərindən öyrənir və ona ən doğru məhsulu seçməyə kömək edirsiniz."
+            },
+            {
+                key: "B",
+                text: "Ən çox satılan iki maşını və müştərinin nəzərdən keçirməsi üçün premium marka maşın nümunəsini seçin.",
+                correctRating: "ineffective",
+                explanation: "Qeyri-effektiv cavabdır. Müştərinin həyat tərzi, ehtiyacları yaxud büdcəsi barədə heç bir məlumat əldə etmədən kor-koranə məhsul təklif edirsiniz."
+            },
+            {
+                key: "C",
+                text: "Müştəriyə JLS-dəki bütün məhsulların zəmanətli və yüksək keyfiyyətli olduğunu və bu növ qərarın çox subyektiv olduğunu söyləyin. Buna görə də sizə müdaxilə etmədən özü qərar versə yaxşı olar.",
+                correctRating: "counterproductive",
+                explanation: "Əks-effektiv cavabdır. Müştəriyə məsləhət verməkdən imtina edirsiniz və pərakəndə satış köməkçisi kimi vəzifə öhdəliklərinizi tamamilə pozursunuz."
+            },
+            {
+                key: "D",
+                text: "Ondan hansı növ qəhvəni bəyəndiyini soruşun və JLS-nin anbarda olan müvafiq qəhvə maşınları istiqamətinə yönləndirin.",
+                correctRating: "slightly",
+                explanation: "Azca Effektiv cavabdır. Ən azından müştərinin dad üstünlüyünü öyrənirsiniz, lakin digər mühüm parametrləri (büdcə, dizayn) unudursunuz."
+            },
+            {
+                key: "E",
+                text: "Müştəriyə qərar verməsinə kömək etmək üçün bəzi məlumatları öyrənməkdə maraqlı olduğunuzu söyləyin. Xüsusilə maşını nə üçün istifadə edəcəyini, mətbəxinin necə olduğunu, dizayn və qiymətə münasibətini və hansı növ qəhvəni sevdiyini bilmək istədiyinizi deyin.",
+                correctRating: "effective",
+                explanation: "Effektiv cavabdır. Bütün mühüm parametrləri öyrənirsiniz, lakin söhbətə başlamazdan əvvəl müştərinin tələsik olub-olmadığını yoxlasaydınız daha yaxşı olardı."
+            }
+        ]
+    }
+];
+
+let currentQuestionIndex = 0;
+let userAnswers = {}; // key: questionId, value: object representing selections
+let quizStarted = false;
+
+// Taymer dəyişənləri (50 dəqiqə = 3000 saniyə)
+const EXAM_DURATION = 50 * 60;
+let timeRemaining = EXAM_DURATION;
+let timerInterval = null;
+
+// DOM Elementləri
+const welcomeContainer = document.getElementById('welcome-container');
+const examContainer = document.getElementById('exam-container');
+const resultsContainer = document.getElementById('results-container');
+const scenarioNavList = document.getElementById('scenario-nav-list');
+const sidebar = document.getElementById('sidebar');
+const timerContainer = document.getElementById('timer-container');
+const timerDisplay = document.getElementById('timer-display');
+const timeoutBanner = document.getElementById('timeout-banner');
+
+// Nişanlar və mətnlər
+const scenarioBadge = document.getElementById('scenario-badge');
+const scenarioTitle = document.getElementById('scenario-title');
+const scenarioDescription = document.getElementById('scenario-description');
+const questionIndexBadge = document.getElementById('question-index-badge');
+const situationText = document.getElementById('situation-text');
+const competencyBadge = document.getElementById('competency-badge');
+const answersInputPanel = document.getElementById('answers-input-panel');
+const progressText = document.getElementById('progress-text');
+const topProgressBar = document.getElementById('top-progress-bar');
+const progressContainer = document.getElementById('progress-container');
+
+// Xəbərdarlıq sahəsi
+const validationWarning = document.getElementById('validation-warning');
+const validationWarningText = document.getElementById('validation-warning-text');
+
+// Düymələr
+const startExamBtn = document.getElementById('start-exam-btn');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const restartBtn = document.getElementById('restart-btn');
+
+window.onload = function() {
+    startExamBtn.addEventListener('click', startExam);
+    prevBtn.addEventListener('click', loadPrevQuestion);
+    nextBtn.addEventListener('click', loadNextQuestion);
+    restartBtn.addEventListener('click', restartExam);
+    buildScenarioSidebar();
+};
+
+// Ssenari yan menyusunun qurulması
+function buildScenarioSidebar() {
+    scenarioNavList.innerHTML = '';
+    const uniqueScenarios = [
+        { id: 1, title: "Ssenari 1: Pərakəndə Satış" },
+        { id: 2, title: "Ssenari 2: Hospital HR" },
+        { id: 3, title: "Ssenari 3: Sutton & Sykes" },
+        { id: 4, title: "Ssenari 4: Jack Lanis" }
+    ];
+
+    uniqueScenarios.forEach(sc => {
+        const item = document.createElement('div');
+        item.id = `sidebar-sc-${sc.id}`;
+        item.className = "flex items-center gap-2 p-2.5 rounded-lg text-xs font-semibold text-slate-500 bg-slate-50 border border-slate-100 transition-all cursor-pointer hover:bg-slate-100";
+        item.innerHTML = `
+            <span class="w-5 h-5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[10px] font-bold shrink-0">${sc.id}</span>
+            <span class="truncate">${sc.title}</span>
+        `;
+        item.addEventListener('click', () => {
+            if (quizStarted) {
+                // Seçilmiş ssenarinin ilk sualını tap
+                const firstQ = SJT_DATABASE.findIndex(q => q.scenarioId === sc.id);
+                if (firstQ !== -1) {
+                    if (saveCurrentAnswers()) {
+                        currentQuestionIndex = firstQ;
+                        renderQuestion();
+                    }
+                }
+            }
+        });
+        scenarioNavList.appendChild(item);
+    });
+}
+
+// Yan menyuda aktiv ssenarini işıqlandırmaq
+function updateSidebarHighlight() {
+    const currentQ = SJT_DATABASE[currentQuestionIndex];
+    for (let i = 1; i <= 4; i++) {
+        const el = document.getElementById(`sidebar-sc-${i}`);
+        if (el) {
+            if (currentQ.scenarioId === i) {
+                el.className = "flex items-center gap-2 p-2.5 rounded-lg text-xs font-bold text-brand-700 bg-brand-50 border border-brand-200 shadow-sm shrink-0";
+                el.querySelector('span').className = "w-5 h-5 rounded-full bg-brand-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0";
+            } else {
+                el.className = "flex items-center gap-2 p-2.5 rounded-lg text-xs font-semibold text-slate-500 bg-slate-50 border border-slate-100 transition-all cursor-pointer hover:bg-slate-100 shrink-0";
+                el.querySelector('span').className = "w-5 h-5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[10px] font-bold shrink-0";
+            }
+        }
+    }
+}
+
+// İmtahana başlama
+function startExam() {
+    quizStarted = true;
+    welcomeContainer.classList.add('hidden');
+    examContainer.classList.remove('hidden');
+    sidebar.classList.remove('hidden');
+    progressContainer.classList.remove('hidden');
+    timeoutBanner.classList.add('hidden');
+    currentQuestionIndex = 0;
+    
+    // Taymerin işə salınması
+    timeRemaining = EXAM_DURATION;
+    updateTimerDisplay();
+    timerContainer.classList.remove('hidden');
+    timerInterval = setInterval(tickTimer, 1000);
+
+    renderQuestion();
+}
+
+// Taymerin saniyəbəsaniyə yenilənməsi
+function tickTimer() {
+    timeRemaining--;
+    updateTimerDisplay();
+    
+    // Zaman 5 dəqiqədən az qaldıqda vizual xəbərdarlıq
+    if (timeRemaining <= 300) {
+        timerContainer.className = "flex items-center gap-2 bg-rose-600 border border-rose-500 px-3.5 py-1.5 rounded-full text-white font-mono text-xs tracking-wider animate-pulse";
+    }
+
+    if (timeRemaining <= 0) {
+        // Zaman bitdi - Vaxtı dayandır və imtahanı avtomatik bitir
+        clearInterval(timerInterval);
+        handleTimeout();
+    }
+}
+
+// Taymer göstəricisinin formatlanması
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = timeRemaining % 60;
+    timerDisplay.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+// Vaxt bitdikdə avtomatik tamamlama
+function handleTimeout() {
+    // Cari sualda etibarlı daxil edilən cavabları sakitcə saxla (xəbərdarlıqsız)
+    saveCurrentAnswersQuietly();
+    
+    // Taymeri gizlət
+    timerContainer.classList.add('hidden');
+    
+    // Nəticələr səhifəsində zamanın bitdiyini göstərən banneri aktiv et
+    timeoutBanner.classList.remove('hidden');
+    
+    // İmtahanı bitir və hesabla
+    finishExam();
+}
+
+// Cari sualdakı natamam məlumatları xəbərdarlıq etmədən yadda saxlamaq üçün sakit yaddaş
+function saveCurrentAnswersQuietly() {
+    const q = SJT_DATABASE[currentQuestionIndex];
+    if (q.format === 'most_least') {
+        const mostRadio = document.querySelector('input[name="most"]:checked');
+        const leastRadio = document.querySelector('input[name="least"]:checked');
+        if (mostRadio && leastRadio && mostRadio.value !== leastRadio.value) {
+            userAnswers[q.id] = { most: mostRadio.value, least: leastRadio.value };
+        }
+    } else if (q.format === 'ranked') {
+        const ranks = {};
+        let valid = true;
+        q.options.forEach(opt => {
+            const selectEl = document.getElementById(`rank-${opt.key}`);
+            if (selectEl && selectEl.value) {
+                ranks[opt.key] = selectEl.value;
+            } else {
+                valid = false;
+            }
+        });
+        if (valid) {
+            userAnswers[q.id] = ranks;
+        }
+    } else if (q.format === 'rated') {
+        const rates = {};
+        let valid = true;
+        q.options.forEach(opt => {
+            const selectEl = document.getElementById(`rate-${opt.key}`);
+            if (selectEl && selectEl.value) {
+                rates[opt.key] = selectEl.value;
+            } else {
+                valid = false;
+            }
+        });
+        if (valid) {
+            userAnswers[q.id] = rates;
+        }
+    }
+}
+
+// Sualın render edilməsi
+function renderQuestion() {
+    hideWarning();
+    const q = SJT_DATABASE[currentQuestionIndex];
+    
+    // Ssenari bannerinin yenilənməsi
+    scenarioBadge.innerText = q.scenarioBadge;
+    scenarioTitle.innerText = q.scenarioTitle;
+    scenarioDescription.innerText = q.scenarioDesc;
+    competencyBadge.innerText = `Kompetensiya: ${q.competency}`;
+    
+    // Tərəqqi göstəricilərinin yenilənməsi
+    questionIndexBadge.innerText = `Situasiya ${currentQuestionIndex + 1} / 16`;
+    situationText.innerText = q.situationText;
+    
+    const progressPercent = Math.round(((currentQuestionIndex) / 16) * 100);
+    topProgressBar.style.width = `${progressPercent}%`;
+    progressText.innerText = `Sual ${currentQuestionIndex + 1} / 16`;
+
+    updateSidebarHighlight();
+
+    // Cavab panellərinin formatına uyğun yaradılması
+    answersInputPanel.innerHTML = '';
+    
+    if (q.format === 'most_least') {
+        renderMostLeastFormat(q);
+    } else if (q.format === 'ranked') {
+        renderRankedFormat(q);
+    } else if (q.format === 'rated') {
+        renderRatedFormat(q);
+    }
+
+    // Naviqasiya düymələrinin idarə edilməsi
+    prevBtn.disabled = currentQuestionIndex === 0;
+
+    if (currentQuestionIndex === SJT_DATABASE.length - 1) {
+        nextBtn.innerHTML = `İmtahanı bitir <i class="fa-solid fa-flag-checkered text-xs"></i>`;
+        nextBtn.className = "bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-xl transition-all flex items-center gap-2 text-sm shadow-md hover:shadow-lg";
+    } else {
+        nextBtn.innerHTML = `Növbəti Sual <i class="fa-solid fa-arrow-right text-xs"></i>`;
+        nextBtn.className = "bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-2.5 rounded-xl transition-all flex items-center gap-2 text-sm shadow-md hover:shadow-lg";
+    }
+}
+
+function renderMostLeastFormat(q) {
+    const header = document.createElement('div');
+    header.className = "grid grid-cols-12 gap-2 text-xs font-bold uppercase text-slate-400 pb-2 border-b border-slate-100 hidden sm:grid";
+    header.innerHTML = `
+        <div class="col-span-8">Variantlar</div>
+        <div class="col-span-2 text-center">Ən Çox Ehtimal</div>
+        <div class="col-span-2 text-center">Ən Az Ehtimal</div>
+    `;
+    answersInputPanel.appendChild(header);
+
+    const saved = userAnswers[q.id] || { most: null, least: null };
+
+    q.options.forEach(opt => {
+        const row = document.createElement('div');
+        row.className = "grid grid-cols-12 gap-3 p-4 bg-slate-50 hover:bg-slate-100/70 border border-slate-100 rounded-xl items-center transition-all flex flex-col sm:grid";
+        
+        row.innerHTML = `
+            <div class="col-span-12 sm:col-span-8 flex items-start gap-2.5">
+                <span class="w-6 h-6 rounded-md bg-brand-100 text-brand-700 font-bold flex items-center justify-center shrink-0 text-xs">${opt.key}</span>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed">${opt.text}</p>
+            </div>
+            <div class="col-span-6 sm:col-span-2 flex justify-center items-center gap-2 w-full sm:w-auto border-t sm:border-t-0 pt-2 sm:pt-0">
+                <span class="sm:hidden text-xs font-bold text-slate-500">Ən Çox: </span>
+                <input type="radio" name="most" value="${opt.key}" ${saved.most === opt.key ? 'checked' : ''} class="w-5 h-5 text-brand-600 border-slate-300 focus:ring-brand-500 cursor-pointer">
+            </div>
+            <div class="col-span-6 sm:col-span-2 flex justify-center items-center gap-2 w-full sm:w-auto border-t sm:border-t-0 pt-2 sm:pt-0">
+                <span class="sm:hidden text-xs font-bold text-slate-500">Ən Az: </span>
+                <input type="radio" name="least" value="${opt.key}" ${saved.least === opt.key ? 'checked' : ''} class="w-5 h-5 text-rose-600 border-slate-300 focus:ring-rose-500 cursor-pointer">
+            </div>
+        `;
+        answersInputPanel.appendChild(row);
+    });
+}
+
+function renderRankedFormat(q) {
+    const saved = userAnswers[q.id] || { A: "", B: "", C: "", D: "" };
+
+    const infoBox = document.createElement('div');
+    infoBox.className = "p-3 bg-brand-50 border border-brand-100 text-brand-800 rounded-xl text-xs font-medium mb-2 flex items-center gap-2";
+    infoBox.innerHTML = `<i class="fa-solid fa-circle-info"></i> Hər bir variantı effektivliyinə görə 1-dən 4-ə qədər sıralayın (1 - Ən effektiv, 4 - Ən az effektiv). Hər dərəcədən yalnız bir dəfə istifadə edilə bilər.`;
+    answersInputPanel.appendChild(infoBox);
+
+    q.options.forEach(opt => {
+        const row = document.createElement('div');
+        row.className = "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 p-4 bg-slate-50 border border-slate-100 rounded-xl hover:bg-slate-100/70 transition-all";
+        
+        row.innerHTML = `
+            <div class="flex items-start gap-2.5 max-w-xl">
+                <span class="w-6 h-6 rounded-md bg-brand-100 text-brand-700 font-bold flex items-center justify-center shrink-0 text-xs">${opt.key}</span>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed">${opt.text}</p>
+            </div>
+            <div class="w-full sm:w-auto shrink-0 border-t sm:border-0 pt-2.5 sm:pt-0">
+                <select id="rank-${opt.key}" class="w-full sm:w-36 bg-white border border-slate-200 rounded-lg p-2 text-sm font-semibold text-slate-700 focus:border-brand-500 focus:ring-brand-500">
+                    <option value="">Seçin...</option>
+                    <option value="1" ${saved[opt.key] === "1" ? "selected" : ""}>1 (Ən Effektiv)</option>
+                    <option value="2" ${saved[opt.key] === "2" ? "selected" : ""}>2 (İkinci)</option>
+                    <option value="3" ${saved[opt.key] === "3" ? "selected" : ""}>3 (Üçüncü)</option>
+                    <option value="4" ${saved[opt.key] === "4" ? "selected" : ""}>4 (Ən Az Effektiv)</option>
+                </select>
+            </div>
+        `;
+        answersInputPanel.appendChild(row);
+    });
+}
+
+function renderRatedFormat(q) {
+    const saved = userAnswers[q.id] || { A: "", B: "", C: "", D: "", E: "" };
+
+    const infoBox = document.createElement('div');
+    infoBox.className = "p-3 bg-brand-50 border border-brand-100 text-brand-800 rounded-xl text-xs font-medium mb-2 flex items-center gap-2";
+    infoBox.innerHTML = `<i class="fa-solid fa-circle-info"></i> Təqdim edilmiş 5 variantı müvafiq dərəcə üzrə qiymətləndirin. Hər bir qiymətləndirmədən yalnız bir dəfə istifadə edə bilərsiniz.`;
+    answersInputPanel.appendChild(infoBox);
+
+    q.options.forEach(opt => {
+        const row = document.createElement('div');
+        row.className = "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 p-4 bg-slate-50 border border-slate-100 rounded-xl hover:bg-slate-100/70 transition-all";
+        
+        row.innerHTML = `
+            <div class="flex items-start gap-2.5 max-w-xl">
+                <span class="w-6 h-6 rounded-md bg-brand-100 text-brand-700 font-bold flex items-center justify-center shrink-0 text-xs">${opt.key}</span>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed">${opt.text}</p>
+            </div>
+            <div class="w-full sm:w-auto shrink-0 border-t sm:border-0 pt-2.5 sm:pt-0">
+                <select id="rate-${opt.key}" class="w-full sm:w-44 bg-white border border-slate-200 rounded-lg p-2 text-sm font-semibold text-slate-700 focus:border-brand-500 focus:ring-brand-500">
+                    <option value="">Reytinq Seçin...</option>
+                    <option value="very" ${saved[opt.key] === "very" ? "selected" : ""}>Çox Effektiv</option>
+                    <option value="effective" ${saved[opt.key] === "effective" ? "selected" : ""}>Effektiv</option>
+                    <option value="slightly" ${saved[opt.key] === "slightly" ? "selected" : ""}>Azca Effektiv</option>
+                    <option value="ineffective" ${saved[opt.key] === "ineffective" ? "selected" : ""}>Qeyri-effektiv</option>
+                    <option value="counterproductive" ${saved[opt.key] === "counterproductive" ? "selected" : ""}>Əks-effektiv</option>
+                </select>
+            </div>
+        `;
+        answersInputPanel.appendChild(row);
+    });
+}
+
+function showWarning(text) {
+    validationWarningText.innerText = text;
+    validationWarning.classList.remove('hidden');
+}
+
+function hideWarning() {
+    validationWarning.classList.add('hidden');
+}
+
+// Cavabların yoxlanılması və yadda saxlanılması
+function saveCurrentAnswers() {
+    const q = SJT_DATABASE[currentQuestionIndex];
+    
+    if (q.format === 'most_least') {
+        const mostRadio = document.querySelector('input[name="most"]:checked');
+        const leastRadio = document.querySelector('input[name="least"]:checked');
+        
+        if (!mostRadio || !leastRadio) {
+            showWarning("Həm 'Ən çox', həm də 'Ən az' ehtimal olunan cavab variantını mütləq qeyd etməlisiniz.");
+            return false;
+        }
+        
+        if (mostRadio.value === leastRadio.value) {
+            showWarning("Eyni variantı həm Ən çox, həm də Ən az ehtimal olaraq seçə bilməzsiniz.");
+            return false;
+        }
+
+        userAnswers[q.id] = {
+            most: mostRadio.value,
+            least: leastRadio.value
+        };
+        
+    } else if (q.format === 'ranked') {
+        const ranks = {};
+        const valuesUsed = new Set();
+        let unassigned = false;
+
+        q.options.forEach(opt => {
+            const selectEl = document.getElementById(`rank-${opt.key}`);
+            const val = selectEl.value;
+            if (!val) {
+                unassigned = true;
+            }
+            ranks[opt.key] = val;
+            valuesUsed.add(val);
+        });
+
+        if (unassigned) {
+            showWarning("Bütün variantlar üçün müvafiq dərəcəni (1-4) seçməlisiniz.");
+            return false;
+        }
+
+        if (valuesUsed.size !== 4) {
+            showWarning("Hər bir dərəcəni (1, 2, 3, 4) yalnız bir dəfə daxil edə bilərsiniz. Təkrar dərəcələrə yol verilmir.");
+            return false;
+        }
+
+        userAnswers[q.id] = ranks;
+
+    } else if (q.format === 'rated') {
+        const rates = {};
+        const valuesUsed = new Set();
+        let unassigned = false;
+
+        q.options.forEach(opt => {
+            const selectEl = document.getElementById(`rate-${opt.key}`);
+            const val = selectEl.value;
+            if (!val) {
+                unassigned = true;
+            }
+            rates[opt.key] = val;
+            valuesUsed.add(val);
+        });
+
+        if (unassigned) {
+            showWarning("Bütün variantlar üçün müvafiq dərəcələri seçməlisiniz.");
+            return false;
+        }
+
+        if (valuesUsed.size !== 5) {
+            showWarning("Hər bir effektivlik reytinqindən yalnız bir dəfə istifadə edilməlidir.");
+            return false;
+        }
+
+        userAnswers[q.id] = rates;
+    }
+
+    hideWarning();
+    return true;
+}
+
+function loadPrevQuestion() {
+    if (saveCurrentAnswers()) {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            renderQuestion();
+        }
+    }
+}
+
+function loadNextQuestion() {
+    if (saveCurrentAnswers()) {
+        if (currentQuestionIndex < SJT_DATABASE.length - 1) {
+            currentQuestionIndex++;
+            renderQuestion();
+        } else {
+            // İmtahanın normal bitirilməsi
+            clearInterval(timerInterval);
+            finishExam();
+        }
+    }
+}
+
+// İmtahanı yekunlaşdırma və balların hesablanması
+function finishExam() {
+    quizStarted = false;
+    clearInterval(timerInterval);
+    examContainer.classList.add('hidden');
+    resultsContainer.classList.remove('hidden');
+    sidebar.classList.add('hidden');
+    progressContainer.classList.add('hidden');
+    timerContainer.classList.add('hidden');
+    topProgressBar.style.width = '100%';
+
+    let totalScore = 0;
+
+    SJT_DATABASE.forEach(q => {
+        const uAns = userAnswers[q.id];
+        let qScore = 0;
+
+        // Əgər sual cavablandırılıbsa (uAns mövcuddursa) hesabla, əks halda avtomatik 0 bal
+        if (uAns) {
+            if (q.format === 'most_least') {
+                const correctMost = q.options.find(o => o.verdict === 'most').key;
+                const correctLeast = q.options.find(o => o.verdict === 'least').key;
+
+                if (uAns.most === correctMost && uAns.least === correctLeast) {
+                    qScore = 3; // Maksimum 3 bal
+                } else if (uAns.most === correctMost || uAns.least === correctLeast) {
+                    qScore = 1; // Qismən düzgün
+                }
+            } else if (q.format === 'ranked') {
+                let correctCount = 0;
+                q.options.forEach(opt => {
+                    if (uAns[opt.key] && parseInt(uAns[opt.key]) === opt.correctRank) {
+                        correctCount++;
+                    }
+                });
+
+                if (correctCount === 4) {
+                    qScore = 3; // Tam sıra uyğunluğu
+                } else if (correctCount === 2) {
+                    qScore = 1; // Qismən uyğunluq
+                }
+            } else if (q.format === 'rated') {
+                let correctCount = 0;
+                q.options.forEach(opt => {
+                    if (uAns[opt.key] && uAns[opt.key] === opt.correctRating) {
+                        correctCount++;
+                    }
+                });
+
+                if (correctCount === 5) {
+                    qScore = 4; // Tam reytinq uyğunluğu (Maks: 4 bal)
+                } else if (correctCount >= 3) {
+                    qScore = 2; // Yüksək uyğunluq
+                } else if (correctCount >= 1) {
+                    qScore = 1; // Az uyğunluq
+                }
+            }
+        } else {
+            qScore = 0; // Cavablandırılmayan sual
+        }
+
+        q.scoreObtained = qScore;
+        totalScore += qScore;
+    });
+
+    // Bal göstəricisinin dairəvi animasiyası
+    const finalScoreEl = document.getElementById('final-score');
+    finalScoreEl.innerText = totalScore;
+    
+    const maxScore = 52;
+    const dashArray = 440; 
+    const offset = dashArray - (dashArray * totalScore) / maxScore;
+    document.getElementById('score-ring').style.strokeDashoffset = offset;
+
+    // Qiymətləndirmə şərhlərinin qurulması
+    const performanceLevel = document.getElementById('performance-level');
+    const performanceFeedback = document.getElementById('performance-feedback');
+
+    if (totalScore >= 45) {
+        performanceLevel.innerText = "Liderlik Səviyyəsi (Mükəmməl)";
+        performanceLevel.className = "font-bold text-lg text-emerald-600";
+        performanceFeedback.innerText = "Təbriklər! Siz çətin və mürəkkəb korporativ və müştəri ssenarilərində tamamilə mükəmməl, strateji və dürüst qərar qəbul etmə bacarığı nümayiş etdirdiniz. Liderlik keyfiyyətləriniz çox yüksəkdir.";
+    } else if (totalScore >= 35) {
+        performanceLevel.innerText = "Professional Səviyyə (Yaxşı)";
+        performanceLevel.className = "font-bold text-lg text-blue-600";
+        performanceFeedback.innerText = "Yaxşı nəticədir. Problemlərə qarşı peşəkar və konstruktiv yanaşma nümayiş etdirirsiniz. Bəzi situasiyalarda daha təsirli və dəstəkləyici alternativləri diqqətdə saxlamaqla nəticənizi daha da artıra bilərsiniz.";
+    } else if (totalScore >= 25) {
+        performanceLevel.innerText = "İnkişaf Edən Səviyyə (Orta)";
+        performanceLevel.className = "font-bold text-lg text-amber-600";
+        performanceFeedback.innerText = "İmtahanı müvəffəqiyyətlə başa vurdunuz, lakin bəzi vəziyyətlərdə qərarlarınız kifayət qədər təsirli deyil. Müştəri yönümlülük və komanda daxili münasibətlər zamanı daha çox empatiya və fəal yanaşmalara önəm verməyinizi tövsiyə edirik.";
+    } else {
+        performanceLevel.innerText = "Təkmilləşməyə Ehtiyacı Var (Zəif)";
+        performanceLevel.className = "font-bold text-lg text-rose-600";
+        performanceFeedback.innerText = "Balınız aşağıdır. Korporativ mühitdə qərarlarınızın həm komanda əhval-ruhiyyəsinə, həm də müştəri məmnuniyyətinə olan real təsirini daha çox nəzərə almalısınız. Aşağıdakı şərhləri diqqətlə oxumağı tövsiyə edirik.";
+    }
+
+    renderDetailedReview();
+}
+
+// İmtahan sonu detallı sual analizi
+function renderDetailedReview() {
+    const reviewList = document.getElementById('review-list');
+    reviewList.innerHTML = '';
+
+    SJT_DATABASE.forEach((q, index) => {
+        const card = document.createElement('div');
+        card.className = "border border-slate-200 rounded-xl overflow-hidden shadow-sm";
+
+        let scoreBadgeClass = "bg-rose-100 text-rose-800";
+        if (q.scoreObtained === 3 || q.scoreObtained === 4) {
+            scoreBadgeClass = "bg-emerald-100 text-emerald-800";
+        } else if (q.scoreObtained >= 1) {
+            scoreBadgeClass = "bg-amber-100 text-amber-800";
+        }
+
+        let formatTypeLabel = q.format === 'most_least' ? 'Ən Çox/Ən Az Ehtimal' : (q.format === 'ranked' ? 'Sıralama (1-4)' : 'Dərəcələndirmə');
+
+        let selectionSummary = '';
+        const userAns = userAnswers[q.id];
+
+        if (!userAns) {
+            selectionSummary = `Sizin seçiminiz: <strong class="text-rose-600"><i class="fa-solid fa-triangle-exclamation"></i> Cavablandırılmayıb (0 Bal)</strong>`;
+        } else if (q.format === 'most_least') {
+            selectionSummary = `Sizin seçiminiz: <strong class="text-slate-800">Ən Çox: ${userAns.most} | Ən Az: ${userAns.least}</strong>`;
+        } else if (q.format === 'ranked') {
+            selectionSummary = `Sizin seçiminiz: <strong class="text-slate-800">A:${userAns.A}, B:${userAns.B}, C:${userAns.C}, D:${userAns.D}</strong>`;
+        } else if (q.format === 'rated') {
+            const tr = { very: 'Çox Effektiv', effective: 'Effektiv', slightly: 'Azca Effektiv', ineffective: 'Qeyri-effektiv', counterproductive: 'Əks-effektiv' };
+            selectionSummary = `Sizin seçiminiz: <strong class="text-slate-800">A: ${tr[userAns.A]}, B: ${tr[userAns.B]}, C: ${tr[userAns.C]}, D: ${tr[userAns.D]}, E: ${tr[userAns.E]}</strong>`;
+        }
+
+        card.innerHTML = `
+            <div class="bg-slate-50 p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-200 cursor-pointer hover:bg-slate-100/70 transition-all" onclick="toggleAccordion('review-body-${q.id}')">
+                <div class="flex items-start sm:items-center gap-2.5">
+                    <span class="w-7 h-7 bg-brand-600 text-white font-bold rounded-lg flex items-center justify-center shrink-0 text-xs">${index + 1}</span>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm leading-tight">${q.situationTitle}</h4>
+                        <p class="text-[11px] text-slate-500 font-medium mt-0.5">${q.scenarioBadge} • ${formatTypeLabel}</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2.5 py-1 rounded-full ${scoreBadgeClass}">Bal: ${q.scoreObtained}</span>
+                    <i class="fa-solid fa-chevron-down text-slate-400 text-xs" id="chevron-review-body-${q.id}"></i>
+                </div>
+            </div>
+            <div id="review-body-${q.id}" class="hidden p-5 flex flex-col gap-4 border-t border-slate-200 bg-white">
+                <div class="p-3 bg-slate-50 border border-slate-150 rounded-lg text-xs leading-relaxed">
+                    <span class="font-bold text-slate-700 block mb-1">Situasiya / Vəziyyət:</span>
+                    <p class="text-slate-600">${q.situationText}</p>
+                </div>
+
+                <div class="text-xs font-semibold">
+                    ${selectionSummary}
+                </div>
+
+                <div class="flex flex-col gap-3 mt-2">
+                    <h5 class="font-bold text-slate-900 text-xs uppercase tracking-wider">Hər Bir Variantın Geniş Təhlili və İzahı:</h5>
+                    <div class="space-y-3">
+                        ${q.options.map(opt => {
+                            let correctLabel = '';
+                            if (q.format === 'most_least') {
+                                if (opt.verdict === 'most') correctLabel = '<span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded ml-2">Ən Effektiv Cavab</span>';
+                                if (opt.verdict === 'least') correctLabel = '<span class="text-[10px] font-bold bg-rose-100 text-rose-800 px-2 py-0.5 rounded ml-2">Ən Az Cavab</span>';
+                            } else if (q.format === 'ranked') {
+                                const rankWords = { 1: "1-ci (Ən effektiv)", 2: "2-ci", 3: "3-cü", 4: "4-cü (Ən az effektiv)" };
+                                correctLabel = `<span class="text-[10px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded ml-2">Doğru Sıra: ${rankWords[opt.correctRank]}</span>`;
+                            } else if (q.format === 'rated') {
+                                const tr = { very: 'Çox Effektiv', effective: 'Effektiv', slightly: 'Azca Effektiv', ineffective: 'Qeyri-effektiv', counterproductive: 'Əks-effektiv' };
+                                correctLabel = `<span class="text-[10px] font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded ml-2">Doğru Qiymət: ${tr[opt.correctRating]}</span>`;
+                            }
+
+                            return `
+                                <div class="p-3.5 rounded-lg border border-slate-100 bg-slate-50/50 flex flex-col gap-1.5">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-5 h-5 bg-slate-200 text-slate-700 font-bold rounded text-[10px] flex items-center justify-center">${opt.key}</span>
+                                        <p class="text-xs font-semibold text-slate-800 leading-relaxed">${opt.text}</p>
+                                        ${correctLabel}
+                                    </div>
+                                    <p class="text-xs text-slate-500 leading-relaxed pl-7 italic"><i class="fa-regular fa-comment-dots text-brand-500 mr-1"></i> ${opt.explanation}</p>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        reviewList.appendChild(card);
+    });
+}
+
+function toggleAccordion(id) {
+    const el = document.getElementById(id);
+    const chev = document.getElementById(`chevron-${id}`);
+    if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+        chev.className = "fa-solid fa-chevron-up text-slate-400 text-xs";
+    } else {
+        el.classList.add('hidden');
+        chev.className = "fa-solid fa-chevron-down text-slate-400 text-xs";
+    }
+}
+
+// İmtahanı sıfırlamaq
+function restartExam() {
+    clearInterval(timerInterval);
+    userAnswers = {};
+    currentQuestionIndex = 0;
+    resultsContainer.classList.add('hidden');
+    welcomeContainer.classList.remove('hidden');
+    sidebar.classList.add('hidden');
+    progressContainer.classList.add('hidden');
+    timerContainer.classList.add('hidden');
+    timeoutBanner.classList.add('hidden');
+    topProgressBar.style.width = '0%';
+}
+</script>
+</body>
+</html>
