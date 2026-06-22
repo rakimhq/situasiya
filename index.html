@@ -131,6 +131,10 @@
                     <div class="font-bold mb-1 text-sm">KEYS 2</div>
                     <div class="text-xs font-medium">"BÖYÜK QAYIDIŞ — FAZA 3"</div>
                 </button>
+                <button onclick="switchCase('case3')" id="btn-case3" class="w-full text-left p-3 rounded-lg border border-transparent hover:bg-gray-100 text-gray-700 transition-all duration-200">
+                    <div class="font-bold mb-1 text-sm">KEYS 3</div>
+                    <div class="text-xs font-medium">"AZƏRBAYCANIN YÜZILLIYI"</div>
+                </button>
             </nav>
             <div class="p-4 border-t border-gray-200 text-xs text-gray-500">
                 İştirakçı Təlimatı: Hər keys üçün bütün əlavələri diqqətlə oxuyun və qrup müzakirəsində iştirak edin.
@@ -944,104 +948,693 @@
                                 Bu keys "Yüksəliş" müsabiqəsinin yarımfinal mərhələsi üçün praktika materialıdır. Bütün statistik göstəricilər, hüquqi maddələr, şəxs adları, qurumlar və hadisələr fərzidir; real şəxs, qurum və sənədlərlə bənzərlik təsadüfidir.
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Case 2: Tövsiyələr -->
-                        <div id="case2-tovsiyeler" class="content-section">
+                    <!-- ============================== CASE 3 ============================== -->
+                    <div id="case3" class="case-section">
+                        <div class="text-center mb-8">
+                            <h1 class="text-3xl font-bold text-gray-900 mb-2">KEYS — "AZƏRBAYCANIN YÜZILLIYI"</h1>
+                            <p class="text-lg text-gray-600">2028-ci il Müstəqilliyin 110 İllik Yubileyinin Milli Kulturel Proqramı — Komitə Seçimi</p>
+                            <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full mt-3 font-semibold tracking-wide">"Yüksəliş" Yarımfinalı — Qrup Müzakirəsi</span>
+                        </div>
+
+                        <!-- Case 3: Kontekst -->
+                        <div id="case3-kontekst" class="content-section active">
+                            <h3>Bugünkü tarix: 22 iyun 2026</h3>
+                            
+                            <h3>Formatın Xüsusiyyəti</h3>
+                            <p>Bu keys digərlərindən əsaslı şəkildə fərqlənir: hər iştirakçı konkret bir rol oynayır. Siz yalnız komanda üzvü deyilsiniz — siz müəyyən bir şəxssiniz, müəyyən geçmişiniz, maraqlarınız, gizli məhdudiyyətləriniz var. Komanda qərarı verərkən siz həm qrupun marağını, həm öz rolunuzun mövqeyini balanslaşdırmalısınız.</p>
+                            <p>Rol kartları fasilitator tərəfindən paylanır. Rol kartınızı başqasına göstərməyin — lakin rolunuzu oynamaqdan çəkinməyin.</p>
+
+                            <h3>Kontekst</h3>
+                            <p>Mədəniyyət Nazirliyi 2028-ci ilin oktyabrında keçiriləcək Müstəqilliyin 110 İllik Yubileyinin milli mədəni proqramını müəyyən etmək üçün səkkiz nəfərlik müstəqil seçim komitəsi yaratmışdır. Komitəyə 18 layihə təqdim olunmuşdur. Komitə bunlardan 5-ni seçməlidir.</p>
+                            <p><strong>Ümumi büdcə:</strong> 12.000.000 AZN</p>
+                            <p>Komitə iclası bu gün, 22 iyun 2026-da keçirilir. Seçimin nəticəsi Nazirlər Kabinetinə 25 iyunda təqdim ediləcək.</p>
+
+                            <h3>ROL KARTLARI</h3>
+                            <p class="text-sm text-gray-500 italic mb-4">(Fasilitator hər kartı ayrıca kağızda paylamalıdır)</p>
+                            
+                            <div class="space-y-6">
+                                <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                                    <h4 class="text-lg font-bold text-gray-800 m-0">ROL 1 — PROF. ƏLİ HƏSƏNOV (62 yaş)</h4>
+                                    <p class="text-sm text-gray-600 mb-2">Bakı Dövlət Universitetinin Tarix Kafedrasının müdiri</p>
+                                    <p class="text-sm">Siz 35 il ərzində Azərbaycanın müasir tarixini tədqiq etmisiniz. Akademik dəqiqlik sizin üçün siyasi məqsədəuyğunluqdan üstündür. 1918-1920 dövrü sizin əsas tədqiqat sahənizdır — bu dövrün "düzgün" təqdim olunub-olunmaması sizin üçün son dərəcə şəxsidir.</p>
+                                    <p class="text-sm mt-2"><strong>Gizli faktor (yalnız özünüz bilirsiniz):</strong> Oğlunuz Layihə 17-nin (rəqəmsal oyun "Azərbaycan Tarixi") baş proqramçısıdır. Layihə seçilsə, ailəsi böyük maliyyə fayda götürəcək. Siz bunu komitəyə açıqlamalısınızmı? Bu qərarı özünüz verin — lakin bilirsiniz ki, açıqlamadığınız halda maraqlar toqquşması riskini daşıyırsınız.</p>
+                                    <p class="text-sm mt-2 text-red-700"><strong>Sərt məhdudiyyətiniz:</strong> Tarixi sənədlərə əsaslanmayan, populist və sadələşdirilmiş hər hansı bir layihəyə AÇIQ etiraz edəcəksiniz.</p>
+                                </div>
+
+                                <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                                    <h4 class="text-lg font-bold text-gray-800 m-0">ROL 2 — SEVİNC MƏMMƏDOVA (31 yaş)</h4>
+                                    <p class="text-sm text-gray-600 mb-2">Rəqəmsal Marketinq Agentliyinin direktoru</p>
+                                    <p class="text-sm">Siz son 5 ildə 12 dövlət qurumunun sosial media strategiyasını hazırlamışsınız. Sizin üçün "görünməyən layihə mövcud deyil" — viral potensial, paylaşma qabiliyyəti, gənc auditoriya ilə rezonans hər şeydən əvvəldir.</p>
+                                    <p class="text-sm mt-2"><strong>Gizli faktor:</strong> Şirkətiniz Layihə 6-nın (Gənclər Rəqəmsal Platforması) texniki podratçısı kimi rəsmi müraciət edib. Layihə seçilsə, ən azı 340.000 AZN dəyərində müqavilə əldə edəcəksiniz. Bunu komitəyə açıqlamalısınızmı?</p>
+                                    <p class="text-sm mt-2 text-red-700"><strong>Sərt məhdudiyyətiniz:</strong> Fiziki abidə və monumental tikintiyə şəxsən inanmırsınız. "Heykəl insan yaddaşını dəyişdirmir, story dəyişdirir" deyirsiniz.</p>
+                                </div>
+
+                                <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                                    <h4 class="text-lg font-bold text-gray-800 m-0">ROL 3 — RAUF BABAYEV (49 yaş)</h4>
+                                    <p class="text-sm text-gray-600 mb-2">Maliyyə Nazirliyi, Büdcə Departamentinin rəisi</p>
+                                    <p class="text-sm">Siz hər layihənin gəlir-xərc balansını, davamlılığını, dövlət büdcəsinə uzunmüddətli yükünü hesablayırsınız. Hissiyat sizdə argument deyil — rəqəmlər argumentdir.</p>
+                                    <p class="text-sm mt-2"><strong>Gizli faktor:</strong> Maliyyə naziri sizə qeyri-rəsmi olaraq bildirib ki, Layihə 4-ün (Şuşa Mədəni Kompleksi) seçilməsi "yuxarılar üçün vacibdir." Siz bunu birbaşa direktiv kimi deyil, "güclü tövsiyə" kimi alıbsınız. Bunu komitədə açıqlayacaqsınızmı?</p>
+                                    <p class="text-sm mt-2 text-red-700"><strong>Sərt məhdudiyyətiniz:</strong> Əgər seçilmiş 5 layihənin büdcəsi 12 milyon AZN-i keçirsə, siz veto istifadə edəcəksiniz — bu sizin komitəyə qatılma şərtinizdir.</p>
+                                </div>
+
+                                <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                                    <h4 class="text-lg font-bold text-gray-800 m-0">ROL 4 — NƏRMİN QULİYEVA (44 yaş)</h4>
+                                    <p class="text-sm text-gray-600 mb-2">Los-Angeles Azərbaycan Diaspora Birliyinin sədri</p>
+                                    <p class="text-sm">Siz 18 ildir ABŞ-da yaşayırsınız. Azərbaycanı xaricilərə necə təqdim etdiyimiz, beynəlxalq mətbuatda nə ilə yer aldığımız sizin prioritetinizdir. Diaspora üzvlərinin böyük əksəriyyəti yüksək beynəlxalq görünürlüklü layihələr istəyir.</p>
+                                    <p class="text-sm mt-2"><strong>Gizli faktor:</strong> Layihə 19 haqqında (bu gün müzakirə ərzində ortaya çıxacaq sürpriz layihə) əvvəlcədən məlumatlısınız. Həmin layihənin müəllifi Leila Ahmadi sizin Los-Angelesdəki şəxsi tanışınızdır. Siz onun işini bəyənirsiniz lakin layihənin yarada biləcəyi siyasi gərginlikdən ehtiyat edirsiniz.</p>
+                                    <p class="text-sm mt-2 text-red-700"><strong>Sərt məhdudiyyətiniz:</strong> Seçilmiş 5 layihədən ən azı biri xarici mətbuatda ciddi yer alacaq keyfiyyətdə olmalıdır. "Daxili bayramlıq" layihələrini dəstəkləməyəcəksiniz.</p>
+                                </div>
+
+                                <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                                    <h4 class="text-lg font-bold text-gray-800 m-0">ROL 5 — MÜBARİZ ƏLİYEV (58 yaş)</h4>
+                                    <p class="text-sm text-gray-600 mb-2">Xalq Sənətkarı, Azərbaycan Milli Sənət Akademiyasının üzvü</p>
+                                    <p class="text-sm">Siz 30 ildir xalçaçılıq, miniatür rəssamlıq, mis döymə sənətini gənc nəslə öyrədirsiz. "Rəqəmsallaşdırmaq" sizin lüğətinizdə "itirmək" ilə sinonimdir.</p>
+                                    <p class="text-sm mt-2"><strong>Gizli faktor:</strong> Layihə 15-in ("Xəzər Çağrısı" Ekoloji Sənət Layihəsi) baş kuratoru kimi dəvət almışsınız. Hələ qərar verməmisiniz — lakin layihə seçilirsə, ehtimalən qəbul edəcəksiniz. Bunu komitədə açıqlamalısınızmı?</p>
+                                    <p class="text-sm mt-2 text-red-700"><strong>Sərt məhdudiyyətiniz:</strong> Ənənəvi sənət və mədəni miras layihələri olmadan seçimə razı olmayacaqsınız. "Texnologiya miras deyil, miras vasitəsidir."</p>
+                                </div>
+
+                                <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                                    <h4 class="text-lg font-bold text-gray-800 m-0">ROL 6 — AYTƏN ƏHMƏDOVA (27 yaş)</h4>
+                                    <p class="text-sm text-gray-600 mb-2">Gənclər Şurasının Mədəniyyət Komitəsinin sədri</p>
+                                    <p class="text-sm">Siz 23 yaşında seçilmiş ən gənc rayon gənclər şurası sədrisiniz. Sizin mandatınız açıqdır: 18-35 yaş qrupunun maraqlarını qorumaq.</p>
+                                    <p class="text-sm mt-2"><strong>Gizli faktor:</strong> Özünüz Layihə 9-un ("100 Üz" Fotoqrafiya Layihəsi) iştirakçı modelləri arasındasınız. Əgər layihə seçilsə, siz geniş ictimai tanınma əldə edəcəksiniz. Bunu açıqlamalısınızmı?</p>
+                                    <p class="text-sm mt-2 text-red-700"><strong>Sərt məhdudiyyətiniz:</strong> Gənclər Şurasının rəsmi mövqeyi budur: Layihə 17 (video oyun) mütləq seçilməlidir — bu, şuranın ümumi iclasında səsvermə ilə qəbul edilmiş mövqedir. Siz şəxsən başqa fikirdə olsanız belə, şuranı təmsil etməlisiniz.</p>
+                                </div>
+
+                                <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                                    <h4 class="text-lg font-bold text-gray-800 m-0">ROL 7 — CEYHUN NƏSİROV (41 yaş)</h4>
+                                    <p class="text-sm text-gray-600 mb-2">Dünya Turizm Təşkilatının Qafqaz Regional Məsləhətçisi</p>
+                                    <p class="text-sm">Siz DTT adından bu komitədə iştirak edirsiniz. Azərbaycana 2027-2030-cu illər arasında əlavə 200.000 turist cəlb etmə hədəfi üzərindədir. Hər layihəni bu lens ilə dəyərləndirirsiniz.</p>
+                                    <p class="text-sm mt-2"><strong>Gizli faktor:</strong> Layihə 1-in (Bakı-100 Kolossal Abidəsi) memar layihəsini hazırlayan şirkətin direktoru ilə 2023-cü ildə ciddi peşəkar münaqişəniz olub. Həmin şirkət sizi DTT-nin bir konfransından çıxartmışdı. Siz bu münaqişəni komitəyə bildirməlisinizmi?</p>
+                                    <p class="text-sm mt-2 text-red-700"><strong>Sərt məhdudiyyətiniz:</strong> Əgər seçilmiş 5 layihənin heç biri xaricdən turist axını yaratmayacaqsa, DTT adından komitəyə rəsmi etiraz sənədi verəcəksiniz.</p>
+                                </div>
+
+                                <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                                    <h4 class="text-lg font-bold text-gray-800 m-0">ROL 8 — LAMAN İSMAYILOVA (36 yaş)</h4>
+                                    <p class="text-sm text-gray-600 mb-2">"Azadlıq" Qəzetinin Mədəniyyət Redaktoru</p>
+                                    <p class="text-sm">Siz jurnalist kimi komitəyə "ictimai şüurun nümayəndəsi" qismində müşahidəçi dəvət olunmuşdunuz. Lakin komitə sədri iclasın əvvəlində sizi tam hüquqlu üzv kimi cəlb edib — bu qərarın hüquqi bazası mübahisəlidir.</p>
+                                    <p class="text-sm mt-2"><strong>Gizli faktor:</strong> Redaksiyannız Layihə 19 haqqında (bu gün sürpriz olaraq meydana çıxacaq) artıq investigativ material hazırlayır. Layihənin komitə tərəfindən rədd edilməsi halında bu material çox daha güclü olacaq. Layihənin seçilməsi isə materialı köhnədəcək. Siz jurnalist etikasına zidd olan bu maraq toqquşmasını necə idarə edəcəksiniz?</p>
+                                    <p class="text-sm mt-2 text-red-700"><strong>Sərt məhdudiyyətiniz:</strong> Şəffaflıq. Komitənin qərarlarının ictimaiyyətin gözü qarşısında izah edilə bilməyən hər hansı aspektinə qarşı çıxacaqsınız.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Case 3: Məsələlər -->
+                        <div id="case3-meseleler" class="content-section">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">MÜZAKİRƏ MƏSƏLƏLƏRİ</h2>
+
+                            <div id="c3-m1" class="step-section active">
+                                <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-200">
+                                    <h3 class="m-0 border-0 pb-0">M1 — İlkin Skan: Hansılar Açıq Şəkildə Kənarda Qalır? (Əlavə 1)</h3>
+                                    <div class="text-sm font-semibold text-white bg-red-600 px-3 py-1 rounded-md border border-red-700 drop-shadow-md">Mərhələ Vaxtı: <span id="timer-c3-m1" class="font-mono">15:00</span></div>
+                                </div>
+                                <p>Hər rol öz prizmasından 18 layihəyə baxır. Komanda kollektiv olaraq: hansı layihələr büdcə, vaxt məhdudiyyəti, hüquqi qeyri-müəyyənlik və ya mahiyyət baxımından dərhal kənar qalmalıdır?</p>
+                                <div class="task-box">
+                                    <p><strong>Komanda tapşırığı:</strong> Konsensusla ən azı 5, ən çox 8 layihəni "keçmir" siyahısına salın. Hər kənarlaşdırma üçün bir cümlə əsaslandırma. Diqqət: "mən bunu sevmirəm" deyil, konkret arqument tələb olunur. Rol kartınızda göstərilən maraqlarınız bu mərhələdə birinci dəfə üzə çıxacaq.</p>
+                                </div>
+                                <div class="mt-6 flex justify-end">
+                                    <button onclick="nextStep('c3', 1)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg shadow transition-colors flex items-center gap-2">
+                                        Bitir və növbəti tapşırığa keç
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="c3-m2" class="step-section">
+                                <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-200">
+                                    <h3 class="m-0 border-0 pb-0">M2 — Məcburi Şərtlər Filtrindən Keçirilmə</h3>
+                                    <div class="text-sm font-semibold text-white bg-red-600 px-3 py-1 rounded-md border border-red-700 drop-shadow-md">Mərhələ Vaxtı: <span id="timer-c3-m2" class="font-mono">15:00</span></div>
+                                </div>
+                                <p>Mədəniyyət Nazirliyi komitəyə aşağıdakı 5 məcburi şərti iclasın əvvəlindən deyil, məhz bu anda açıqlayır:</p>
+                                <ul class="list-disc pl-6 mb-4 text-gray-700 space-y-2">
+                                    <li><strong>Şərt 1:</strong> Seçilmiş layihələrdən ən azı biri Şuşa ilə birbaşa bağlı olmalıdır.</li>
+                                    <li><strong>Şərt 2:</strong> Seçilmiş layihələrdən ən azı biri 2028 oktyabrına qədər görünən, fiziki nəticə verməlidir (sərgi açılışı, binanın istifadəyə verilməsi, filmın premyerası kimi).</li>
+                                    <li><strong>Şərt 3:</strong> Büdcənin maksimum 40%-i, yəni 4.800.000 AZN fiziki infrastruktura yönləndirilə bilər.</li>
+                                    <li><strong>Şərt 4:</strong> Seçilmiş layihələrdən ən azı biri 18-35 yaş qrupunu birbaşa hədəfləməlidir.</li>
+                                    <li><strong>Şərt 5:</strong> Büdcə 12.000.000 AZN-i keçə bilməz. Heç bir maliyyə ehtiyat fondu yoxdur.</li>
+                                </ul>
+                                <div class="task-box">
+                                    <p><strong>Komanda tapşırığı:</strong> Bu şərtləri M1-dəki "keçir" siyahınıza tətbiq edin. Hansı kombinasiyalar mümkündür? Şərt 3-ün (fiziki infrastruktur tavan) seçimlərinizə təsiri nədir? İndiyə qədər güclü görünən hansı layihə bu şərtlər altında problematik olur?</p>
+                                </div>
+                                <div class="mt-6 flex justify-end">
+                                    <button onclick="nextStep('c3', 2)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg shadow transition-colors flex items-center gap-2">
+                                        Bitir və növbəti tapşırığa keç
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="c3-m3" class="step-section">
+                                <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-200">
+                                    <h3 class="m-0 border-0 pb-0">M3 — Sürpriz: 19-cu Layihə Gəlir (Əlavə 2)</h3>
+                                    <div class="text-sm font-semibold text-white bg-red-600 px-3 py-1 rounded-md border border-red-700 drop-shadow-md">Mərhələ Vaxtı: <span id="timer-c3-m3" class="font-mono">20:00</span></div>
+                                </div>
+                                <p>İclasın bu mərhələsində komitə katibi zala girir və əlavə bir zərf verir. Mədəniyyət Nazirinin imzalı qısa məktubu:</p>
+                                <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4">
+                                    "Komitəyə: Bu layihə rəsmi müraciət müddəti bitdikdən sonra daxil olmuşdur. Bununla belə, beynəlxalq rezonansını nəzərə alaraq, komitənin mülahizəsinə buraxıram. Qəbul etmək ya etməmək tamamilə komitənin sərəstinə aiddir."
+                                </blockquote>
+                                
+                                <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-lg mb-4">
+                                    <h4 class="text-lg font-bold text-yellow-800 m-0">LAYİHƏ 19 — "Unudulmuş Onilliklər" (sürpriz layihə)</h4>
+                                    <p class="text-sm font-semibold mt-1">Büdcə: 1.900.000 AZN | Müddət: 14 ay</p>
+                                    <p class="text-sm mt-2">Fransız-İranlı dünyaca tanınan sənətkar Leila Ahmadinin müəllifi olduğu interaktiv multimedia qurğusu. Bakıda 6 aylıq nümayiş nəzərdə tutulur. Qurğu Azərbaycanın 100 illik tarixini xronoloji olaraq canlandırır: 1918-1920-ci illərin müstəqillik dövrü, 1937-38 Sovet repressiyaları, 1988-1994 müharibə dövrü, 2020 Zəfər.</p>
+                                    <p class="text-sm mt-2">Layihə "The Guardian" və "Le Monde" tərəfindən "2027-nin ən gözlənilən sərgilərindən biri" adlandırılıb. MoMA (Nyu-York) sonradan bu qurğunu öz salonlarında nümayiş etdirməyə maraq göstərib.</p>
+                                    <p class="text-sm mt-2 text-red-700"><strong>Mübahisəli məqam:</strong> Sənədlər qismən dövlət orqanlarından kənar, ailə şəhadəti və məxfi arxivlərə əsaslanır. Bəzi epizodların — xüsusilə 1937-38 repressiyalarının — təqdimat tərzi Dövlət Arxivi tərəfindən "tarixi kontekstsiz" kimi şərh olunub. Arxiv direktoru bunu yazılı etirazla bildirmişdir.</p>
+                                    
+                                    <table class="mt-4 w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>5</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>5</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>4</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>4</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-red-600 font-bold">Çox yüksək (siyasi, hüquqi, diplomatik)</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="task-box">
+                                    <p><strong>Komanda tapşırığı:</strong> Bu layihəni rəsmi siyahıya daxil edib müzakirə etməlisinizmi? Əgər bəli, hansı şərtlərlə seçilə bilər? Əgər xeyr, rəddedilmənin əsaslandırması nə olmalıdır? Hər rol öz prizmasından bu layihəyə baxır — lakin unutmayın: bəzi rol kartlarında bu layihə ilə birbaşa şəxsi əlaqə var.</p>
+                                </div>
+                                <div class="mt-6 flex justify-end">
+                                    <button onclick="nextStep('c3', 3)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg shadow transition-colors flex items-center gap-2">
+                                        Bitir və növbəti tapşırığa keç
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="c3-m4" class="step-section">
+                                <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-200">
+                                    <h3 class="m-0 border-0 pb-0">M4 — Yekun Seçim: 5 Layihə</h3>
+                                    <div class="text-sm font-semibold text-white bg-red-600 px-3 py-1 rounded-md border border-red-700 drop-shadow-md">Mərhələ Vaxtı: <span id="timer-c3-m4" class="font-mono">20:00</span></div>
+                                </div>
+                                <p>Komanda indi bütün məlumatlar, şərtlər, şəxsi maraqlar, sürpriz layihə — hamısını nəzərə alaraq 5 layihəni seçməlidir.</p>
+                                <div class="task-box">
+                                    <p><strong>Komanda tapşırığı:</strong></p>
+                                    <ul class="list-disc pl-6 space-y-2 mt-2">
+                                        <li>5 layihənin adını, ümumi büdcəsini (12M AZN-i keçmədiyini yoxlayın) açıqlayın.</li>
+                                        <li>Hər layihə üçün: "Bu layihəni niyə seçdik?" sualına bir cümlə.</li>
+                                        <li>Komitədə hər hansı bir maraqlar toqquşması açıqlanmadısa (rol kartlarındakı gizli faktorlar), komitə bu barədə nə edəcək — bu məsələni məhz bu anda müzakirəyə çıxarın.</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-6 flex justify-end">
+                                    <button onclick="nextStep('c3', 4)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg shadow transition-colors flex items-center gap-2">
+                                        Bitir və növbəti tapşırığa keç
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="c3-m5" class="step-section">
+                                <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-200">
+                                    <h3 class="m-0 border-0 pb-0">M5 — İctimai Bəyanat</h3>
+                                    <div class="text-sm font-semibold text-white bg-red-600 px-3 py-1 rounded-md border border-red-700 drop-shadow-md">Mərhələ Vaxtı: <span id="timer-c3-m5" class="font-mono">10:00</span></div>
+                                </div>
+                                <p>Mədəniyyət Nazirliyinin press-katibi komitədən müzakirə bitdikdən 30 dəqiqə sonra ictimaiyyətə oxunacaq qısa bəyanat tələb edir.</p>
+                                <div class="task-box">
+                                    <p><strong>Komanda tapşırığı:</strong> Birlikdə 3-4 cümləlik bəyanat yazın: hansı 5 layihənin seçildiyini, bu seçimin arxasındakı ümumi prinsipi (niyə bu 5?) və 2028-ci ilə verdiyi mesajı ictimai dildə ifadə edin. Bu bəyanat həm peşəkar, həm də cəmiyyətin hər kəsinə anlaşılan olmalıdır.</p>
+                                </div>
+                                <div class="mt-6 flex justify-between items-center bg-green-50 border border-green-200 p-4 rounded-lg">
+                                    <div class="text-green-800">
+                                        <p class="font-bold">Keysin müzakirə mərhələsi tamamlandı!</p>
+                                        <p class="text-sm">Qiymətləndirmə Matrisini görmək üçün "Tövsiyələr" bölməsinə keçin.</p>
+                                    </div>
+                                    <button onclick="switchTab('tovsiyeler')" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg shadow transition-colors flex items-center gap-2">
+                                        Bitir və Tövsiyələrə Keç
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Case 3: Əlavələr -->
+                        <div id="case3-elaveler" class="content-section">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">ƏLAVƏLƏR</h2>
+                            
+                            <h3>LAYİHƏ SİYAHISI (1-18)</h3>
+                            <p class="text-sm font-semibold mb-4 text-indigo-700">Büdcə: 12.000.000 AZN. 5 layihə seçilməlidir.</p>
+
+                            <div class="space-y-8">
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 1 — "Bakı-100" Kolossal Abidəsi</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 4.500.000 AZN | Müddət: 26 ay (2028 oktyabrına çatışır, lakin marja yoxdur)</p>
+                                    <p class="text-sm my-2">Bakı Bulvarında 47 metrlik, işıqlandırılmış, interaktiv elementlər daşıyan monumental heykəl kompleksi. Layihəni hazırlayan memar bürosu beynəlxalq mükafatların sahibidir. Abidənin altında 800 nəfərlik yeraltı mədəni mərkəz nəzərdə tutulub.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>4</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>2</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>2</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>5</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-red-600">Yüksək (vaxt marja yoxdur)</td></tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-sm mt-2 text-gray-600 italic">Əlavə qeyd: Layihə üçün Neftçilər prospektindəki iki parkın söküləcəyi məlum olub, lakin bu rəsmi sənədlərə əks olunmayıb.</p>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 2 — Rəqəmsal Milli Arxiv "Yaddaş"</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 2.800.000 AZN | Müddət: 18 ay</p>
+                                    <p class="text-sm my-2">1918-2028-ci illər arasındakı bütün dövlət arxiv sənədlərinin, şəxsi arxivlərin, foto və video materialların tam rəqəmsal kataloqu. 14 dildə interfeys, açıq giriş. UNESCO-nun "Dünya Yaddaşı" proqramına namizədlik müraciəti nəzərdə tutulub.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>3</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>5</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>3</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>1</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-yellow-600">Orta (arxiv materiallarına giriş hüququ hələ tam həll olunmayıb)</td></tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-sm mt-2 text-gray-600 italic">Əlavə qeyd: Müdafiə Nazirliyinin arxivindəki materialların bir hissəsinin bu layihəyə daxil edilib-edilməyəcəyi hələ müzakirə mərhələsindədir.</p>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 3 — "100 Sənət" Beynəlxalq Müasir Sənət Sərgi Seriyası</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 3.200.000 AZN | Müddət: 14 ay (2027-ci ildə başlayır, 2028-ə qədər 4 sərgi)</p>
+                                    <p class="text-sm my-2">Bakı, Nyu-York, Paris və Tokioda eyni zamanda açılan, 100 azərbaycanlı və 100 beynəlxalq sənətkarı birləşdirən seriya. "Azərbaycan müasir sənəti" brendini qlobal miqyasda yerləşdirir. Guggenheim Bilbao bu seriyanın tərəfdaşı olmağa razılıq verib.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>5</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>4</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>3</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>3</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-yellow-600">Orta (Guggenheim şərtləri hələ imzalanmayıb)</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 4 — Şuşa Tarixi Şəhər Mərkəzinin Mədəni Bərpası</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 3.800.000 AZN | Müddət: 30 ay</p>
+                                    <p class="text-sm my-2">Şuşanın tarixi məhəllə toxumasının 8 əsas binasının bərpası, musiqi tarixi muzeyinin yaradılması, "canlı musiqi şəhəri" konsepsiyasının həyata keçirilməsi. UNESCO Dünya İrsi siyahısına namizədlik üçün texniki sənəd hazırlığını da əhatə edir.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>4</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>5</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>2</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>5</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-red-600">Orta-yüksək (30 ay, 2028 oktyabrına yetişməyəcək)</td></tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-sm mt-2 text-gray-600 italic">Əlavə qeyd: Bu layihənin büdcəsi 30 ay ərzində xərclənir, lakin rəsmi açılış yalnız 2029-da mümkündür. Yəni yubileydə görünməyəcək, lakin yubiley "açılış" kimi elan edilə bilər.</p>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 5 — "Azərbaycan Yüzilliyi" Sənədli Film Seriyası (8 hissəli)</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 1.600.000 AZN | Müddət: 20 ay</p>
+                                    <p class="text-sm my-2">İctimai televiziya üçün 8 hissəli sənədli serial: hər hissə 10 ili əhatə edir, 1918-2028. Azərbaycan, ingilis, rus dilərində yayımlanacaq, Netflix kimi platformalara lisenziya satışı nəzərdə tutulub.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>4</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>4</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>3</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>2</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-yellow-600">Orta (tarixi interpretasiya mübahisəsi riski var)</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 6 — Gənclər Rəqəmsal Yaradıcılıq Platforması "Miras.az"</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 800.000 AZN | Müddət: 8 ay</p>
+                                    <p class="text-sm my-2">18-35 yaş üçün açıq rəqəmsal platforma: gənclər Azərbaycan mədəniyyəti mövzusunda video, musiqi, qrafika, yazı əsərləri yaradır və paylaşır. Aylıq müsabiqələr, mükafatlar, ən yaxşı əsərlər fiziki sərgilərdə nümayiş etdirilir.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>2</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>3</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>5</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>1</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-green-600">Aşağı</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 7 — "Azərbaycan Dadı" Milli Kulinariya Festivalı (3 illik)</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 1.200.000 AZN | Müddət: 2026-2028 (hər il oktyabrda)</p>
+                                    <p class="text-sm my-2">Bakıda keçirilən 3 günlük beynəlxalq kulinariya festivalı, Azərbaycan mətbəxini dünya brendinə çevirmək məqsədi daşıyır. 40 ölkədən şef-aşpazlar dəvət olunacaq, 4 Michelin ulduzlu şef bağlı müqavilə var, canlı yayım nəzərdə tutulur.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>3</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>4</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>4</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>5</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-green-600">Aşağı</td></tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-sm mt-2 text-gray-600 italic">Əlavə qeyd: Bəzi komitə üzvlərinin ilkin şərhlərindən: "Kulinariya milli mədəniyyətin bir hissəsidir, lakin bu, yubileyin ən ciddi layihəsi kimi qəbul edilə bilərmi?"</p>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 8 — Ənənəvi Sənətkarlıq Dirçəliş Proqramı</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 900.000 AZN | Müddət: 24 ay</p>
+                                    <p class="text-sm my-2">12 rayonda 240 gənc sənətkarın ənənəvi xalçaçılıq, zərgərlik, mis döymə, şəbəkə sənəti üzrə peşəkar ustalardan intensiv təlim alması. Hər rayon üçün daimi sənətkarlıq mərkəzi qurulacaq, məhsulların xarici bazarlara çıxarılması üçün B2B platforması yaradılacaq.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>2</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>5</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>3</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>3</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-green-600">Aşağı-orta</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 9 — "100 Üz" Fotoqrafiya Layihəsi</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 600.000 AZN | Müddət: 12 ay</p>
+                                    <p class="text-sm my-2">Azərbaycanın 100 fərqli sakini — 100 yaşlı kənd ağsaqqalından 16 yaşlı olimpiya şampionuna qədər — dünyaca tanınan fotoqraf tərəfindən çəkilir. Bakıda böyük sərgi, beynəlxalq foto jurnallarda nəşr, "National Geographic" ilə danışıqlar davam edir.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>4</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>4</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>3</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>2</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-green-600">Aşağı</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 10 — Beynəlxalq Akademik Konfrans Seriyası "Azərbaycan Tədqiqatları"</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 700.000 AZN | Müddət: 2027-2028 (3 konfrans)</p>
+                                    <p class="text-sm my-2">Dünyanın aparıcı universitetlərindən 300 akademisyeni Bakıya cəlb edən, Azərbaycan tarixi, dilçiliyi, mədəniyyəti üzrə 3 beynəlxalq elmi konfrans. "Azərbaycan Tədqiqatları" jurnalının 10 xüsusi sayı nəşr olunacaq.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>3</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>4</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>1</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>2</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-green-600">Aşağı</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 11 — Uşaq Televiziya Seriyası "Biz Azərbaycanıq"</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 1.100.000 AZN | Müddət: 16 ay (52 epizod)</p>
+                                    <p class="text-sm my-2">4-10 yaş üçün animasiya seriyası: hər epizod Azərbaycanın bir tarix anını, bir milli simvolunu, bir ənənəsini canlı, müasir animasiya dili ilə təqdim edir. İctimai televiziya + YouTube platforması + məktəb proqramına inteqrasiya nəzərdə tutulur.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>2</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>4</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>5 (uşaqlar)</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>1</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-green-600">Aşağı</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 12 — Elm və İnnovasiya Sərgi Mərkəzi "Azərbaycan 2118"</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 2.400.000 AZN | Müddət: 22 ay</p>
+                                    <p class="text-sm my-2">Azərbaycanın 100 ilinə baxış + növbəti 100 ilin texnoloji vizyonu: interaktiv, immersiv sərgi mərkəzi. VR/AR texnologiyaları ilə keçmişi "yaşatmaq" + gənc elm adamlarının gələcək ixtiralarını nümayiş etdirmək. Fiziki bina tələb olunmur — pavilyon formatı.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>3</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>3</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>5</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>4</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-yellow-600">Orta</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 13 — Diaspora Mədəni Körpü Proqramı</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 900.000 AZN | Müddət: 18 ay</p>
+                                    <p class="text-sm my-2">52 ölkədə 140 diaspora təşkilatı ilə eyni vaxtda keçiriləcək mədəni tədbirlər silsiləsi: Azərbaycan musiqi gecələri, sərgilər, kulinariya tədbirləri. Hər tədbirde yerli mediaya PR kampaniyası daxildir.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>4</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>3</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>2</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>2</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-green-600">Aşağı</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 14 — Milli Ədəbiyyat Müsabiqəsi "Yüzilliyin Romanı"</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 400.000 AZN | Müddət: 14 ay</p>
+                                    <p class="text-sm my-2">Azərbaycanın son 100 ilini mövzu edən original roman üçün milli müsabiqə. Birinci mükafat: 80.000 AZN + dünya dillərinə tərcümə üçün nəşriyyat müqaviləsi. Bütün iştirakçı əsərlər arxivlənəcək, ən yaxşı 20-si çap olunacaq.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>2</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>5</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>3</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>1</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-green-600">Aşağı</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 15 — "Xəzər Çağrısı" Ekoloji Sənət Layihəsi</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 1.300.000 AZN | Müddət: 16 ay</p>
+                                    <p class="text-sm my-2">Xəzər sahilinin 5 bölgəsində 15 azərbaycanlı sənətkarın yerli materialar (çay daşı, Xəzər balığının sümüyü, neft qalıqları) istifadə edərək yaratdığı monumental ekoloji sənət qurğuları. COP31 (2028) ilə zamanlama nəzərdə tutulub.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>4</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>5</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>4</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>3</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-yellow-600">Orta</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 16 — "Azərbaycan Genomu" Milli Miras Elmi Proqramı</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 2.100.000 AZN | Müddət: 24 ay</p>
+                                    <p class="text-sm my-2">Azərbaycan əhalisinin genetik müxtəlifliyini, köç tarixini, etnik qatlarını elmi metodlarla sənədləşdirən milli genotipləmə proqramı. Nəticələr açıq elmi məlumat bazasında paylaşılacaq, hər vətəndaş könüllü iştirak edə bilər.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>3</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>5</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>3</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>1</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-red-600">Yüksək (etik icazə prosedurları, məxfilik qanunvericiliyi)</td></tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-sm mt-2 text-gray-600 italic">Əlavə qeyd: Bu layihənin elanı hazırda dünyada bənzəri olmayan bir addımdır. Lakin bəzi komitə üzvlərinin ilkin reaksiyası: "Bu mədəni layihədir, yoxsa biotibbi?"</p>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 17 — Rəqəmsal Oyun "Azərbaycan Tarixi: 1918-2028"</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 1.500.000 AZN | Müddət: 18 ay</p>
+                                    <p class="text-sm my-2">Steam, PlayStation və mobil platformalar üçün çoxdilli strategiya oyunu. Oyunçu 1918-ci ildə başlayır, tarixi qərarlar qəbul edir. 12 dildə lokalizasiya nəzərdə tutulub. "Gənclər tarixə oyun vasitəsilə qoşulur" — layihənin əsas ideyası.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>3</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>3</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>5</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>1</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-yellow-600">Orta (tarixi interpretasiya mübahisəsi riski)</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-800 m-0">LAYİHƏ 18 — Milli Himnin Yenidən Orkestrləşdirilməsi və Konsert Seriyası</h4>
+                                    <p class="text-sm text-gray-600">Büdcə: 500.000 AZN | Müddət: 10 ay</p>
+                                    <p class="text-sm my-2">Dünyanın 10 aparıcı orkestrinin Azərbaycan Dövlət Himnini öz interpretasiyasında ifa etməsi, hər ifa video formatda yayımlanır. Yubileydə Heydər Əliyev Sarayında final konserti. "Azərbaycan himnini dünyanın hər şəhərindən eşitmək" — kampaniya mesajı.</p>
+                                    <table class="w-full text-sm">
+                                        <thead><tr><th>Göstərici</th><th>Qiymət (1-5)</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Beynəlxalq görünürlük</td><td>4</td></tr>
+                                            <tr><td>Mədəni orijinallıq</td><td>3</td></tr>
+                                            <tr><td>Gənclər üçün aktualllıq</td><td>2</td></tr>
+                                            <tr><td>Turizm potensialı</td><td>2</td></tr>
+                                            <tr><td>İcra riski</td><td class="text-green-600">Aşağı</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <h3 class="mt-8">ƏLAVƏ 1 — Büdcə Kombinasiyalarının Yoxlama Cədvəli</h3>
+                            <p class="text-sm text-gray-500 italic mb-2">Komanda istifadəsi üçün: Hər layihənin büdcəsi ilə mümkün kombinasiyaların yoxlanılmasına kömək edir.</p>
+                            <table>
+                                <thead>
+                                    <tr><th>Layihə</th><th>Büdcə (AZN)</th><th>Fiziki infra?</th><th>Şuşa?</th><th>18-35 yaş?</th><th>2028-ə çatır?</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>L-1 Bakı-100 Abidə</td><td>4.500.000</td><td>✓</td><td>—</td><td>—</td><td class="text-red-600">Riskli</td></tr>
+                                    <tr><td>L-2 Rəqəmsal Arxiv</td><td>2.800.000</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+                                    <tr><td>L-3 Beyn. Sərgi</td><td>3.200.000</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+                                    <tr><td>L-4 Şuşa Bərpası</td><td>3.800.000</td><td>✓</td><td>✓</td><td>—</td><td class="text-red-600">— (2029)</td></tr>
+                                    <tr><td>L-5 Sənədli Film</td><td>1.600.000</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+                                    <tr><td>L-6 Gənclər Platforması</td><td>800.000</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+                                    <tr><td>L-7 Kulinariya Festivalı</td><td>1.200.000</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+                                    <tr><td>L-8 Sənətkarlıq</td><td>900.000</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+                                    <tr><td>L-9 "100 Üz" Foto</td><td>600.000</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+                                    <tr><td>L-10 Akademik Konfrans</td><td>700.000</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+                                    <tr><td>L-11 Uşaq Serialı</td><td>1.100.000</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+                                    <tr><td>L-12 Elm Sərgi</td><td>2.400.000</td><td>—</td><td>—</td><td>✓</td><td class="text-red-600">Riskli</td></tr>
+                                    <tr><td>L-13 Diaspora</td><td>900.000</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+                                    <tr><td>L-14 Ədəbiyyat</td><td>400.000</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+                                    <tr><td>L-15 Ekoloji Sənət</td><td>1.300.000</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+                                    <tr><td>L-16 Genom</td><td>2.100.000</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+                                    <tr><td>L-17 Video Oyun</td><td>1.500.000</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+                                    <tr><td>L-18 Himn Konserti</td><td>500.000</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+                                    <tr class="bg-yellow-50"><td class="font-bold">L-19 Unudulmuş On.</td><td class="font-bold">1.900.000</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+                                </tbody>
+                            </table>
+                            <p class="text-sm text-red-600 font-semibold mb-6">Şərt 3 tavan: Fiziki infrastruktur layihələri (L-1 və L-4) birlikdə 8.300.000 AZN = büdcənin 69%-i. İkisini birlikdə seçmək Şərt 3-ü pozur. L-1 və ya L-4-dən yalnız biri seçilə bilər.</p>
+
+                            <h3>ƏLAVƏ 2 — Ekspert Rəyləri</h3>
+                            <p class="text-sm text-gray-500 italic mb-4">Bu rəylər müxtəlif sahə mütəxəssislərindən toplanmışdır. Rəylər komitəni bağlamır, lakin qərar qəbulunda istifadə edilə bilər.</p>
+                            
+                            <div class="space-y-4">
+                                <p><strong>Turizm eksperti (DTT, Qafqaz): Layihə 7 (Kulinariya Festivalı) haqqında:</strong><br>"Gastro-turizm dünya miqyasında 18% illik artımla ən sürətli böyüyən turizm seqmentidir. San Sebastián, Bologna, Kopenhagen nümunələri göstərir ki, düzgün brend olduqda şəhər 'dadın paytaxtına' çevrilə bilər. Azərbaycan mətbəxi bu baxımdan istifadə olunmamış nəhəng potensial daşıyır."</p>
+                                
+                                <p><strong>UNESCO Dünya İrsi Departamenti: Layihə 4 (Şuşa) haqqında:</strong><br>"Şuşanın UNESCO siyahısına daxil edilməsi üçün texniki əsaslar mövcuddur. Lakin 30 aylıq bərpa müddəti 2028 yubileyinə fiziki olaraq yetiş-məyəcək. Bunun əvəzinə, UNESCO namizədlik faylının hazırlanmasını 2028-in özü kimi bir nailiyyət olaraq elan etmək mümkündür."</p>
+                                
+                                <p><strong>Rəqəmsal Oyun Sənayesi Assosiasiyası: Layihə 17 (Video Oyun) haqqında:</strong><br>"18 ay müddəti bu keyfiyyətdə oyun üçün çox sıxdır. 24-28 ay daha realistikdir. Vaxt sıxlığı keyfiyyəti aşağı salacaq, bu isə beynəlxalq bazarda mənfi rəylərə gətirib çıxaracaq. 'Milli tarix oyunu' kimi başlayan layihənin pis rəyləri ikiqat zərər verir."</p>
+                                
+                                <p><strong>Hüquq Məsləhətçisi: Layihə 16 (Genom) haqqında:</strong><br>"Könüllü iştirak etmişi olsa belə, genetik məlumatların dövlət bazasında toplanması 'Şəxsi Məlumatların Mühafizəsi haqqında' qanunun 14.1-ci maddəsi ilə potensial ziddiyyət yaradır. İcra öncəsi Konstitusiya Məhkəməsindən rəy alınması tövsiyə olunur. Bu proses minimum 6 ay aparır."</p>
+                                
+                                <p><strong>Dövlət Arxivi: Layihə 19 (Unudulmuş Onilliklər) haqqında:</strong><br>"Layihənin müəllifi Leila Ahmadinin istifadə etdiyi bəzi sənədlər Dövlət Arxivinin qeydiyyat sisteminə əsasən 'dövlət sirrinin müddəti bitməmiş materiallar' kateqoriyasına aiddir. 1937-38 dövrünə aid materialların müraciətsiz istifadəsi arxiv qanunvericiliyinin 8.3-cü maddəsini poza bilər. Lakin müəllif bu sənədlərə diasporadakı şəxsi ailə arxivlərindən çatdığını iddia edir ki, bu halda Azərbaycan qanunvericiliyi tətbiq olunmur."</p>
+                            </div>
+
+                            <h3 class="mt-8">ƏLAVƏ 3 — Komitənin Öz-özünə Qiymətləndirməsi Üçün</h3>
+                            <p class="text-sm text-gray-500 italic mb-2">(Tapşırıq tamamlandıqdan sonra açılacaq — fasilitatorun təlimatı ilə)</p>
+                            <p>Bu sütun komanda daxilindəki dinamikanı sonradan müzakirə etmək üçündür:</p>
+                            <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                                <li>Hansı rol kartları öz maraqlarını ən açıq şəkildə müdafiə etdi?</li>
+                                <li>Maraqlar toqquşması (conflict of interest) halları açıqlandımı, gizli saxlanıldımı, yoxsa yarıaçıq idarə edildi?</li>
+                                <li>Layihə 19-un gəlişi komandanın dinamikasını necə dəyişdirdi?</li>
+                                <li>Büdcə məhdudiyyəti ilə şərtlər birlikdə tətbiq olunanda komanda hansı kompromisi etdi?</li>
+                                <li>Bəyanat yazılarkən komandanın seçimini bütün üzvlər eyni cümlələrlə izah edə bildimi?</li>
+                            </ul>
+
+                            <div class="mt-8 pt-4 border-t border-gray-200 text-sm text-gray-500 text-center">
+                                Bu keys "Yüksəliş" müsabiqəsinin yarımfinal mərhələsi üçün praktika materialıdır. Bütün şəxs adları, qurumlar, layihə detalları və rəqəmlər fərzidir.
+                            </div>
+                        </div>
+
+                        <!-- Case 3: Tövsiyələr -->
+                        <div id="case3-tovsiyeler" class="content-section">
                             <h2 class="text-2xl font-bold text-gray-900 mb-6 border-b pb-2">Ekspertlər Üçün Tövsiyələr (Qiymətləndirmə Matrisi)</h2>
                             <p class="mb-6 text-gray-600">Aşağıda hər mərhələ (M1-M5) üzrə komitə iştirakçılarında ölçülməsi hədəflənən əsas kompetensiyalar, tövsiyə olunan addımlar və nümunəvi davranışlar verilmişdir.</p>
                             
                             <div class="space-y-6">
-                                <!-- Case 2 M1 Tövsiyə -->
+                                <!-- Case 3 M1 Tövsiyə -->
                                 <div class="bg-white border border-indigo-100 rounded-lg shadow-sm overflow-hidden">
                                     <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100 flex justify-between items-center">
-                                        <h3 class="font-bold text-indigo-900 m-0 border-0 p-0">M1: Kadastr Arxitekturası</h3>
-                                        <span class="text-xs font-semibold bg-indigo-200 text-indigo-800 px-2 py-1 rounded">İnnovativ Düşüncə, Qərarvermə</span>
+                                        <h3 class="font-bold text-indigo-900 m-0 border-0 p-0">M1: İlkin Skan: Hansılar Açıq Şəkildə Kənarda Qalır?</h3>
+                                        <span class="text-xs font-semibold bg-indigo-200 text-indigo-800 px-2 py-1 rounded">Strateji düşüncə, İşin effektivliyinin idarə edilməsi</span>
                                     </div>
                                     <div class="p-4">
                                         <h4 class="text-sm font-semibold text-gray-700 mt-0 mb-2">Tövsiyə olunan addımlar:</h4>
                                         <ul class="list-disc pl-5 text-sm text-gray-600 mb-4 space-y-1">
-                                            <li>Dövlət Nəzarəti (X) ilə Müstəqil Reyestr (Y) arasında sərhədləri təhlil edib, BMT və Avropa İttifaqının şərtlərini ödəmək üçün "Hibrid" model (dövlət reyestrinə paralel ictimai şikayət interfeysi) yaradılmasını təklif etmək.</li>
+                                            <li>Layihələri yalnız estetik deyil, icra riski və büdcə mütənasibliyi üzrə sürətlə təsnifləndirmək (məs. L-1 və L-16 kimi riskli layihələri ələmək).</li>
+                                            <li>Şəxsi maraqları qeyd etməklə yanaşı, ümumi qrupun vaxtını rasional istifadə edərək ən zəif layihələri konsensusla xaric etmək.</li>
                                         </ul>
                                         <h4 class="text-sm font-semibold text-gray-700 mb-2">Nümunəvi davranışlar:</h4>
                                         <ul class="list-disc pl-5 text-sm text-green-700 mb-3 space-y-1">
-                                            <li><strong>İnnovativ Düşüncə (Müsbət):</strong> Siyahıdakı məhdud iki varianta kor-koranə bağlı qalmayaraq hər ikisinin güclü tərəflərini birləşdirən "üçüncü yol" irəli sürür.</li>
-                                            <li><strong>Qərarvermə (Müsbət):</strong> İDB (İslam İnkişaf Bankı) təklifini ziddiyyətli İpoteka qanununa (Maddə 14.2) əsasən sürətlə ələyə bilir.</li>
+                                            <li><strong>İşin effektivliyinin idarə edilməsi (Müsbət):</strong> Çoxsaylı layihələr içərisindən (18 ədəd) vaxtı səmərəli istifadə edərək zəifləri sürətlə çıxdaş etmə metodologiyası təklif edir.</li>
+                                            <li><strong>Strateji düşüncə (Müsbət):</strong> Layihələrin yalnız qısamüddətli yubiley təsirini deyil, uzunmüddətli icra riskini (Məsələn, Genom layihəsindəki hüquqi maneələr) görə bilir.</li>
                                         </ul>
                                     </div>
                                 </div>
 
-                                <!-- Case 2 M2 Tövsiyə -->
+                                <!-- Case 3 M2 Tövsiyə -->
                                 <div class="bg-white border border-indigo-100 rounded-lg shadow-sm overflow-hidden">
                                     <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100 flex justify-between items-center">
-                                        <h3 class="font-bold text-indigo-900 m-0 border-0 p-0">M2: Torpaq İddialarının Həlli</h3>
-                                        <span class="text-xs font-semibold bg-indigo-200 text-indigo-800 px-2 py-1 rounded">Strateji Düşüncə, Etika və Dürüstlük</span>
+                                        <h3 class="font-bold text-indigo-900 m-0 border-0 p-0">M2: Məcburi Şərtlər Filtrindən Keçirilmə</h3>
+                                        <span class="text-xs font-semibold bg-indigo-200 text-indigo-800 px-2 py-1 rounded">Adaptivlik, Qərarvermə</span>
                                     </div>
                                     <div class="p-4">
                                         <h4 class="text-sm font-semibold text-gray-700 mt-0 mb-2">Tövsiyə olunan addımlar:</h4>
                                         <ul class="list-disc pl-5 text-sm text-gray-600 mb-4 space-y-1">
-                                            <li>Kateqoriya D (mürəkkəb) üçün müstəqil Məhkəmə (MTM) yaradarkən, 4608 ailənin hüquqlarının pozulmaması üçün "müvəqqəti məskunlaşma" fondu/mexanizmi təklif etmək.</li>
+                                            <li>Yeni tətbiq olunan 5 sərt şərtə əsasən ilkin siyahını dərhal yenidən qurmaq (Məsələn, L-1 və L-4-ün eyni anda seçilə bilməyəcəyini riyazi olaraq sübut etmək).</li>
+                                            <li>Müxtəlif "paket" ssenariləri (Şuşa+Gənclər+Görünürlük kombinasiyaları) tərtib edib 12 milyon tavanına uyğunlaşdırmaq.</li>
                                         </ul>
                                         <h4 class="text-sm font-semibold text-gray-700 mb-2">Nümunəvi davranışlar:</h4>
                                         <ul class="list-disc pl-5 text-sm text-green-700 mb-3 space-y-1">
-                                            <li><strong>Etika və Dürüstlük (Müsbət):</strong> Sürət xatirinə insanların mülkiyyət hüquqlarının (D kateqoriyası) pozulmasına və haqsız inzibati qərara qarşı çıxır.</li>
-                                            <li><strong>Strateji Düşüncə (Müsbət):</strong> Yalnız D kateqoriyasını ayırmaqla (fokuslanmış yanaşma) A, B və C kateqoriyalarının sürətini kəsməyən xətt qurur.</li>
+                                            <li><strong>Adaptivlik (Müsbət):</strong> Gözlənilməz kəskin şərtlərin ortaya çıxması ilə sevdiyi/marağında olduğu layihədən imtina etməyi (və ya dəyişdirməyi) bacarır.</li>
+                                            <li><strong>Qərarvermə (Müsbət):</strong> Analitik filtrdən (cədvəl matrisindən) istifadə edərək komandanı sürətlə konkret 7-8 layihəlik yarımfinal siyahısına gətirir.</li>
                                         </ul>
                                     </div>
                                 </div>
 
-                                <!-- Case 2 M3 Tövsiyə -->
+                                <!-- Case 3 M3 Tövsiyə -->
                                 <div class="bg-white border border-indigo-100 rounded-lg shadow-sm overflow-hidden">
                                     <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100 flex justify-between items-center">
-                                        <h3 class="font-bold text-indigo-900 m-0 border-0 p-0">M3: Rayon Prioritetləşdirilməsi</h3>
-                                        <span class="text-xs font-semibold bg-indigo-200 text-indigo-800 px-2 py-1 rounded">Adaptivlik, İşin effektiv idarə edilməsi</span>
+                                        <h3 class="font-bold text-indigo-900 m-0 border-0 p-0">M3: Sürpriz Layihə 19</h3>
+                                        <span class="text-xs font-semibold bg-indigo-200 text-indigo-800 px-2 py-1 rounded">Etika və Dürüstlük, Komanda İşi</span>
                                     </div>
                                     <div class="p-4">
                                         <h4 class="text-sm font-semibold text-gray-700 mt-0 mb-2">Tövsiyə olunan addımlar:</h4>
                                         <ul class="list-disc pl-5 text-sm text-gray-600 mb-4 space-y-1">
-                                            <li>Siyasi təzyiqə (Şuşa/Kəlbəcər gözləntisi) baxmayaraq rəqəmsal faktlara (infrastruktur 23%) söykənərək obyektiv arqument qurmaq.</li>
+                                            <li>L-19-un gətirdiyi beynəlxalq nüfuzla (MoMA ehtimalı) siyasi/arxiv riskini tarazlaşdırmaq. Rədd edildiyi təqdirdə "senzura" ittihamlarına qarşı əsaslı cavab hazırlamaq.</li>
+                                            <li>Diaspora sədri və Jurnalist rollarının (əgər açıqlayarlarsa) bu layihəyə dair ziddiyyətli maraqlarını komanda daxilində şəffaf müzakirəyə çıxarmaq.</li>
                                         </ul>
                                         <h4 class="text-sm font-semibold text-gray-700 mb-2">Nümunəvi davranışlar:</h4>
                                         <ul class="list-disc pl-5 text-sm text-green-700 mb-3 space-y-1">
-                                            <li><strong>İşin effektiv idarə edilməsi (Müsbət):</strong> Məhdud resursları və zamanı, ən yüksək infrastruktur hazırlığı olan (Laçın/Xocavənd) rayonlara yönəldib qısa vaxtda maksimum nəticə (ailə köçürülməsi) hədəfləyir.</li>
-                                            <li><strong>Adaptivlik (Müsbət):</strong> Ağdamdakı mina partlayışını nəzərə alıb yükü digər hazır rayonlara sürətlə dislokasiya edir.</li>
+                                            <li><strong>Etika və Dürüstlük (Müsbət):</strong> Arxiv qanunvericiliyinin pozulması riskini (Əlavə 2) və layihənin qeyri-şəffaf yolla sonradan əlavə edilməsini etik prinsip olaraq sorğulayır. Öz gizli marağını komandaya etiraf edir.</li>
+                                            <li><strong>Komanda İşi (Müsbət):</strong> Ziddiyyətli fikirlərin (siyasət vs. sənət) qütbləşməsinin qarşısını alır, ortaq mövqe axtarır.</li>
                                         </ul>
                                     </div>
                                 </div>
 
-                                <!-- Case 2 M4 Tövsiyə -->
+                                <!-- Case 3 M4 Tövsiyə -->
                                 <div class="bg-white border border-indigo-100 rounded-lg shadow-sm overflow-hidden">
                                     <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100 flex justify-between items-center">
-                                        <h3 class="font-bold text-indigo-900 m-0 border-0 p-0">M4: Ağdam Hadisəsinin Nəticələri</h3>
-                                        <span class="text-xs font-semibold bg-indigo-200 text-indigo-800 px-2 py-1 rounded">Qərarvermə, Effektiv Liderlik</span>
+                                        <h3 class="font-bold text-indigo-900 m-0 border-0 p-0">M4: Yekun Seçim</h3>
+                                        <span class="text-xs font-semibold bg-indigo-200 text-indigo-800 px-2 py-1 rounded">Nəticəyönümlülük, Effektiv Liderlik</span>
                                     </div>
                                     <div class="p-4">
                                         <h4 class="text-sm font-semibold text-gray-700 mt-0 mb-2">Tövsiyə olunan addımlar:</h4>
                                         <ul class="list-disc pl-5 text-sm text-gray-600 mb-4 space-y-1">
-                                            <li>Maddə 22.3-ə riayət edib 27 sahənin işini dayandırmaqla bərabər, ANAMA ilə "idarəedilən risk" zonasında (yeni auditdən sürətli keçmiş) işə icazə üçün konstruktiv danışıq aparmaq.</li>
+                                            <li>Bütün şərtləri (büdcə <12M, Şuşa, gənclər, fiziki nəticə) ödəyən 5 layihəlik son siyahını təsdiqləmək və hər biri üçün lakonik əsaslandırma formalaşdırmaq.</li>
+                                            <li>Maraqlar toqquşması ilə bağlı (xüsusən Maliyyə Nazirliyinin direktivi, yaxud Jurnalistin vəziyyəti) rəsmi protokola qeyd salmaq və ya şifahi xəbərdarlıq qərarı vermək.</li>
                                         </ul>
                                         <h4 class="text-sm font-semibold text-gray-700 mb-2">Nümunəvi davranışlar:</h4>
                                         <ul class="list-disc pl-5 text-sm text-green-700 mb-3 space-y-1">
-                                            <li><strong>Effektiv Liderlik (Müsbət):</strong> Böhran anında insan həyatını qoruyan və hüquqi sənədə hörmət edən məsuliyyətli mövqe nümayiş etdirir.</li>
-                                            <li><strong>Qərarvermə (Müsbət):</strong> Təşvişə düşmədən podratçı ilə ANAMA arasındakı informasiya asimmetriyasını (köhnəlmiş xəritə) operativ şəkildə anlamağa və həll etməyə çalışır.</li>
+                                            <li><strong>Nəticəyönümlülük (Müsbət):</strong> Dağınıq müzakirəni toparlayıb konkret büdcəli və əsaslandırılmış 5 layihəni sənədləşdirməyə nail olur.</li>
+                                            <li><strong>Effektiv Liderlik (Müsbət):</strong> Sona qədər öz rolunun inadından əl çəkməyən komanda üzvləri ilə konstruktiv kompromis yaradır.</li>
                                         </ul>
                                     </div>
                                 </div>
 
-                                <!-- Case 2 M5 Tövsiyə -->
+                                <!-- Case 3 M5 Tövsiyə -->
                                 <div class="bg-white border border-indigo-100 rounded-lg shadow-sm overflow-hidden">
                                     <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100 flex justify-between items-center">
-                                        <h3 class="font-bold text-indigo-900 m-0 border-0 p-0">M5: Parlament Hesabatı</h3>
-                                        <span class="text-xs font-semibold bg-indigo-200 text-indigo-800 px-2 py-1 rounded">Nəticəyönümlülük, Etika, Liderlik</span>
+                                        <h3 class="font-bold text-indigo-900 m-0 border-0 p-0">M5: İctimai Bəyanat</h3>
+                                        <span class="text-xs font-semibold bg-indigo-200 text-indigo-800 px-2 py-1 rounded">İnnovativ Düşüncə, Komanda İşi</span>
                                     </div>
                                     <div class="p-4">
                                         <h4 class="text-sm font-semibold text-gray-700 mt-0 mb-2">Tövsiyə olunan addımlar:</h4>
                                         <ul class="list-disc pl-5 text-sm text-gray-600 mb-4 space-y-1">
-                                            <li>İctimaiyyətə reallığı gizlətmədən, fəqət təşvişə səbəb olmadan "yenidən müəyyən edilmiş" realistik hədəfi elan etmək (Yəni Seçim 2).</li>
+                                            <li>Quru büdcə rəqəmlərini "Milli Mirasın Gələcəyə Ötürülməsi" və ya "Yüzilliyin Yeni Səsi" kimi birləşdirici bir narrativə (hekayəyə) çevirmək.</li>
+                                            <li>Komanda olaraq vahid və müsbət bir ictimai ton tapmaq.</li>
                                         </ul>
                                         <h4 class="text-sm font-semibold text-gray-700 mb-2">Nümunəvi davranışlar:</h4>
                                         <ul class="list-disc pl-5 text-sm text-green-700 mb-3 space-y-1">
-                                            <li><strong>Nəticəyönümlülük (Müsbət):</strong> 31 dekabr illüziyasından imtina edib komandanın əvvəlki addımlardan çıxardığı (11.400-14.600) real rəqəmə fokuslanır.</li>
-                                            <li><strong>Etika və Dürüstlük (Müsbət):</strong> Siyasi hesabatlılıq anında yalan və ya boş vəd vermir, mövcud gerçəkliyi mərdliklə qəbul və cəmiyyətə şəffaf təqdim edir.</li>
+                                            <li><strong>İnnovativ Düşüncə (Müsbət):</strong> Standart bürokratik dildən qaçaraq xalqı və gəncləri həyəcanlandıran orijinal kommunikasiya mesajı (PR mətni) hazırlayır.</li>
+                                            <li><strong>Komanda İşi (Müsbət):</strong> Bəyanatın yazılış prosesində iştirak edir, başqasının cümləsini daha yaxşılaşdırır.</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1057,7 +1650,8 @@
     <script>
         let stepTimersData = {
             'c1-m1': 20 * 60, 'c1-m2': 20 * 60, 'c1-m3': 20 * 60, 'c1-m4': 20 * 60, 'c1-m5': 20 * 60,
-            'c2-m1': 20 * 60, 'c2-m2': 20 * 60, 'c2-m3': 20 * 60, 'c2-m4': 20 * 60, 'c2-m5': 20 * 60
+            'c2-m1': 20 * 60, 'c2-m2': 20 * 60, 'c2-m3': 20 * 60, 'c2-m4': 20 * 60, 'c2-m5': 20 * 60,
+            'c3-m1': 15 * 60, 'c3-m2': 15 * 60, 'c3-m3': 20 * 60, 'c3-m4': 20 * 60, 'c3-m5': 10 * 60
         };
         let activeStepId = 'c1-m1';
 
@@ -1125,7 +1719,7 @@
         // Case switching logic
         function switchCase(caseId) {
             // Update Sidebar Styling
-            const cases = ['case1', 'case2'];
+            const cases = ['case1', 'case2', 'case3'];
             cases.forEach(c => {
                 const btn = document.getElementById(`btn-${c}`);
                 if(c === caseId) {
@@ -1144,7 +1738,7 @@
             document.getElementById(caseId).classList.add('active');
 
             // Reset active step logic to M1 of the new case
-            const casePrefix = caseId === 'case1' ? 'c1' : 'c2';
+            const casePrefix = caseId === 'case1' ? 'c1' : (caseId === 'case2' ? 'c2' : 'c3');
             for(let i=1; i<=5; i++) {
                 const el = document.getElementById(`${casePrefix}-m${i}`);
                 if(el) {
